@@ -74,7 +74,7 @@ hbs.registerHelper("ifUndefined", (value, options) => {
 // default value for title local
 app.locals.title = "Express - Board Game Market";
 
-//METIDO DE DANI
+
 app.use(
   session({
     secret: "board game market react secret",
@@ -94,7 +94,7 @@ const index = require("./routes/index");
 app.use("/", index);
 
 const authRouter = require('./routes/auth');
-app.use('/auth', authRouter);
+app.use('/api/auth', authRouter);
 
 const item = require('./routes/item');
 app.use('/item', item);

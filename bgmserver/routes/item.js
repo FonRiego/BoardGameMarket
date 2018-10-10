@@ -8,7 +8,7 @@ const Message = require('../models/Message')
 const Conversation = require('../models/Conversation')
 
 
-//////// RUTAS PPR HACER!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//////// RUTAS POR HACER!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // CRUD: RETRIEVE
 router.get('/',(req,res,next) => {
     Model.find()

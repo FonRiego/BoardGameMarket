@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import AuthService from './components/auth/AuthService';
-//import Navbar from './components/Navbar';
+import Navbar from './components/Navbar';
 
 export default class App extends React.Component {
   constructor(props){
@@ -50,19 +50,9 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          {/* <Navbar userInSession={this.state.loggedInUser} logout={this.logout} /> */}
+          <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <p>Hola {this.state.loggedInUser.username}, para App estás logado</p>
         </header>
       </div>
     );
@@ -71,7 +61,11 @@ export default class App extends React.Component {
         <div className="App">
           <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-            {/* <Navbar userInSession={this.state.loggedInUser} logout={this.logout} /> */}
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+            <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
             <Switch>
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
               <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>

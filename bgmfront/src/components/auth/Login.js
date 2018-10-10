@@ -16,7 +16,6 @@ export default class Login extends React.Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
-
     this.service.login(username, password)
       .then(response => {
         this.setState({
@@ -24,7 +23,6 @@ export default class Login extends React.Component {
           password: password,
           error: false
         });
-
         this.props.getUser(response)
       })
       .catch(error => {
