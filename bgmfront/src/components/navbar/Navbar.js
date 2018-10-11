@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AuthService from './auth/AuthService';
+import AuthService from '../auth/AuthService';
 
 export default class Navbar extends React.Component {
   constructor(props) {
@@ -20,19 +20,19 @@ export default class Navbar extends React.Component {
   render() {
     if (this.state.loggedInUser) {
       return (
-        <nav className="nav-style">
+        <nav className="navbar">
+        <img href=""></img>
           <Link to="/">
-            <button onClick={() => this.handleLogout}>Logout</button>
+            <button onClick={this.handleLogout}>Log out</button>
           </Link>
-
-          <h2>Welcome, {this.state.loggedInUser.username}</h2>
+          <p>Para NavBar estás logado, {this.state.loggedInUser.username}</p>
         </nav>
       )
     } else {
       return (
         <div>
-          <p>Para NavBar no estoy logado</p>
-          <nav className="nav-style">
+          <p>Para NavBar no estás logado</p>
+          <nav className="navbar">
             <ul>
             <li><Link to='/signup'>Signup</Link></li>
             <li><Link to='/login'>Login</Link></li>

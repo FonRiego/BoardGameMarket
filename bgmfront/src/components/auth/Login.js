@@ -5,10 +5,7 @@ import AuthService from './AuthService'
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      username: "", 
-      password: "" 
-    };
+    this.state = { username: '', password: '' };
     this.service = new AuthService();
   }
 
@@ -16,6 +13,7 @@ export default class Login extends React.Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
+
     this.service.login(username, password)
       .then(response => {
         this.setState({
@@ -23,6 +21,7 @@ export default class Login extends React.Component {
           password: password,
           error: false
         });
+
         this.props.getUser(response)
       })
       .catch(error => {
@@ -40,26 +39,25 @@ export default class Login extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <h3>Log-in Here</h3>
-        <form onSubmit={this.handleFormSubmit}>
-          <fieldset>
-            <label>Username:</label>
-            <input type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)} />
-          </fieldset>
 
-          <fieldset>
-            <label>Password:</label>
-            <input type="password" name="password" value={this.state.password} onChange={e => this.handleChange(e)} />
-          </fieldset>
+    return (<div>
+      <h3>Please, login to our site</h3>
 
-          <input type="submit" value="Login" />
-        </form>
+      <form onSubmit={this.handleFormSubmit}>
+        <fieldset>
+          <label>Username:</label>
+          <input type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)} />
+        </fieldset>
 
-        <h1>{this.state.error ? 'Error' : ''}</h1>
-      </div>
-    )
+        <fieldset>
+          <label>Password:</label>
+          <input type="password" name="password" value={this.state.password} onChange={e => this.handleChange(e)} />
+        </fieldset>
+
+        <input type="submit" value="Login" />
+      </form>
+
+      <h1>{this.state.error ? 'Error' : ''}</h1>
+    </div>)
   }
 }
-

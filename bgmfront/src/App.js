@@ -1,11 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
 import { Switch, Route } from 'react-router-dom';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import AuthService from './components/auth/AuthService';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar/Navbar';
 
 export default class App extends React.Component {
   constructor(props){
@@ -47,32 +46,28 @@ export default class App extends React.Component {
     this.fetchUser()
 
     if(this.state.loggedInUser){
-    return (
-      <div className="App">
-        <header className="App-header">
-          <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Hola {this.state.loggedInUser.username}, para App estás logado</p>
-        </header>
-      </div>
-    );
+      return (
+        <div className="App">
+          <header className="App-header">
+            <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
+            <p>Para App estás logado</p>
+          </header>
+        </div>
+      );
     } else {
       return (
         <div className="App">
           <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <br/>
-          <br/>
-          <br/>
-          <br/>
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-            <Switch>
+            <p>Para App no estás logado</p>
+          </header>
+          <Switch>
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
               <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
             </Switch>
-          </header>
         </div>
       );
     }
   }
 }
+
