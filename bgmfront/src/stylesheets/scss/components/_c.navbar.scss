@@ -1,0 +1,19 @@
+ //RECORDAR
+ //box-sizing: border-box;
+ 
+ 
+ .navbar {
+   position: fixed;
+   top: 0;
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   border: 1px solid red;
+   height: $header-height;
+
+   img {
+     height: 100%;
+     max-width: auto;
+   }
+ }

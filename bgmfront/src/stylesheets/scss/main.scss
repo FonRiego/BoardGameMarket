@@ -20,7 +20,7 @@
 @import 'components/c.app';
 // @import 'components/c.comments';
 // @import 'components/c.dashboard';
-// @import 'components/c.navigation';
+@import 'components/c.navbar';
 // @import 'components/c.code';
 // @import 'components/c.footer';
 // @import 'components/c.list-inline';
@@ -32,3 +32,10 @@
 // @import 'utilities/u.height';
 // @import 'utilities/u.color';
 // @import 'utilities/u.margin';
+
+
+// PARA EL SCSS DEL MAIN CONTAINER, RESTO DE LA PÄGINA HOME TRAS LA NAVBAR
+.main-container {
+  margin-top: $header-height;
+  background-color: grey;
+}

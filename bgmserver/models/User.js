@@ -4,7 +4,6 @@ const Schema   = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
   password: String,
-  email: String,
   avatarName: String,
   avatarPath: {type: String, default:"/images/user_placeholder.png"},
   province: {

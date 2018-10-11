@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import AuthService from './components/auth/AuthService';
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/Navbar';
 
 export default class App extends React.Component {
   constructor(props){
@@ -50,8 +50,10 @@ export default class App extends React.Component {
         <div className="App">
           <header className="App-header">
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-            <p>Para App estás logado</p>
           </header>
+          <div className="main-container">
+            <p>Aquí va la barra de búsqueda e items</p>
+          </div>
         </div>
       );
     } else {
@@ -59,8 +61,10 @@ export default class App extends React.Component {
         <div className="App">
           <header className="App-header">
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-            <p>Para App no estás logado</p>
           </header>
+          <div className="main-container">
+            <p>Aquí va la barra de búsqueda e items</p>
+          </div>
           <Switch>
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
               <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
