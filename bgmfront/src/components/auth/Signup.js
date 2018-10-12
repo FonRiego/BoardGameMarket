@@ -1,7 +1,8 @@
 import React from 'react';
-import AuthService from './AuthService'
+import AuthService from './AuthService';
+import { withRouter } from 'react-router-dom';
 
-export default class Signup extends React.Component {
+class Signup extends React.Component {
   constructor(props){
     super(props);
     this.state = { 
@@ -26,8 +27,12 @@ export default class Signup extends React.Component {
             province: ""
         });
         this.props.getUser(response.user)
+    }).then ( e => {
+      this.props.history.push("/");
+      //CUANDO TENGA PROFILE, SERÁ PROFILE
     })
-    .catch( error => console.log(error) )
+    .catch( error => console.log(error))
+    
   }
 
   handleChange = (event) => {  
@@ -55,6 +60,7 @@ export default class Signup extends React.Component {
           <fieldset>
             <label>Tu provincia:</label>
             <select value={this.state.province} name="province" onChange={ e => this.handleChange(e)}>
+              <option value="" selected disabled hidden>Choose here</option>
               <option value="A Coruña">A Coruña</option>
               <option value="Álava">Álava</option>
               <option value="Albacete">Albacete</option>
@@ -119,3 +125,5 @@ export default class Signup extends React.Component {
     )
   }
 }
+
+export default withRouter(Signup);

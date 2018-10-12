@@ -1,12 +1,14 @@
 import React from 'react';
 // import logo from './logo.svg';
-import { Switch, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, Switch, Redirect, withRouter} from 'react-router-dom';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import AuthService from './components/auth/AuthService';
 import Navbar from './components/Navbar';
+import Board from './components/Board';
+import {Home} from './components/Home';
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props){
     super(props)
     this.state = { loggedInUser: null };
@@ -47,31 +49,46 @@ export default class App extends React.Component {
 
     if(this.state.loggedInUser){
       return (
-        <div className="App">
-          <header className="App-header">
-            <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-          </header>
-          <div className="main-container">
-            <p>Aquí va la barra de búsqueda e items</p>
+        <div>
+          <div className="App">
+            <header className="App-header">
+              <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
+            </header>
+            <div className="main-container">
+              <p>Aquí pintaré el profile</p>
+              {/* <Profile/> */}
+            </div>
           </div>
+          <Switch>
+              <Route exact path="/home" key="r2" component={()=><Home/>} />,
+              <Route exact path="/board" key="r3" component={()=><Board/>} />
+          </Switch>
         </div>
       );
     } else {
       return (
-        <div className="App">
-          <header className="App-header">
-            <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
-          </header>
-          <div className="main-container">
-            <p>Aquí va la barra de búsqueda e items</p>
+        <div>
+          <div className="App">
+            <header className="App-header">
+              <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
+            </header>
+            <div className="main-container">
+              <Router>
+                <div>
+                  <Route exact path="/home" key="r2" component={()=><Home/>} />,
+                  <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>,
+                  <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
+                </div>
+              </Router>
+              <Home/>
+            </div>
           </div>
-          <Switch>
-              <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
-              <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
-            </Switch>
         </div>
       );
     }
   }
 }
+
+
+export default withRouter(App);
 

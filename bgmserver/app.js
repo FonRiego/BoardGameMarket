@@ -32,7 +32,7 @@ const debug = require("debug")(
 const app = express();
 
 // Middleware Setup
-var whitelist = ["http://localhost:3001"];
+var whitelist = ["http://localhost:3001", "https://www.boardgamegeek.com/xmlapi2"];
 var corsOptions = {
   origin: function(origin, callback) {
     var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
