@@ -94,9 +94,9 @@ const index = require("./routes/index");
 app.use("/", index);
 
 const authRouter = require('./routes/auth');
-app.use('/api/auth', authRouter);
+app.use("/api/auth", authRouter);
 
-const item = require('./routes/item');
-app.use('/item', item);
+const board = require('./routes/board');
+app.use("/api/board", board);
 
 module.exports = app;

@@ -7,31 +7,56 @@ export default class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      stringToSearch: "",
       results: []
     };
-    this.petition = axios.create({
-      baseURL: 'http://localhost:3000/api/auth <<<<<XXXXXX CAMBIAR!!!!!>>>>>',
-      withCredentials: false
+    this.service = axios.create({
+      baseURL: 'http://localhost:3000/api/board',
     });
   }
 
-  getItems = (queryString) => {
-    return this.petition.get('/ruta del server que usaré', {queryString})
-      .then( response => {
-        this.setState({
-          results: response.data, o de la manera que sea (data.data, por ejemplo)
-        })
+  handlestringToSearch = (stringToSearch) => {
+    this.setState({ stringToSearch: stringToSearch}, 
+    () => this.getItems())
+  }
+  // componentWillMount(){
+  //   this.getItems();
+  // }
+
+  getItems = () => {
+    // let {stringToSearch} = this.state;
+    return axios.get('http://localhost:3000/api/board')
+      .then( res => {
+        let results = res.data
+        // console.log(response)
+        this.setState({ results })
       })
+      .catch(e => console.log(e))
   }
 
-///USARÉ queryString para la petición AXIOS
+///USARÉ stringToSearch para la petición AXIOS
 
   render() {
+    let {results, stringToSearch} = this.state;
+    // console.log(results)
+  
     return(
       <div>
         <p>Aquí va la searchBar</p>
-        <SearchBar search={queryString =>this.getItems(queryString)}/>
+        <SearchBar 
+          stringToSearch = { stringToSearch } 
+          typedString = { stringToSearch => this.handlestringToSearch(stringToSearch) }
+          // submitSearch = { this.getItems(stringToSearch) }
+        />
         <div>
+          <div>
+            {results.map(item => <p>{item.name}</p>)}
+          </div>
+          {/* <div>
+            <img src={results[0].image_url} alt=""/>
+            <p>{results.name}</p>
+          </div> */}
+
           <p>Aquí tengo que pintar this.state.results, un array, habrá que hace un map de un componente Item, pasándole la información de ese array. Cada componente Item tendrá un link que abrirá una ventana a la info más detallada del juego. Hay que ver cómo hacer eso, algo tipo alert, un modal quizá o algo así.</p>
           <ul>
             <li>Juego 1</li>

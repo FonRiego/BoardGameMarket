@@ -5,32 +5,35 @@ import React from 'react'
 //HABRÁ QUE HACER  OTRA DIFERENTE PARA BUSCAR JUEGOS PARA AÑADIR DE MI BASE DE DATOS GRANDE O ADAPTAR ESTA PARA PODER USARLA EN AMBOS CASOS.
 
 export default class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      queryString: ""
-    }
-}
 
-  handleSubmit() {
-    let queryString = this.state.queryString;
-    this.props.search(queryString); 
-    this.setState({ queryString: "" });
+  // handleSubmit() {
+  //   let stringToSearch = this.state.stringToSearch;
+  //   console.log(this.state.stringToSearch)
+
+  //   this.props.search(stringToSearch); 
+  //   this.setState({ stringToSearch: "" });
+  // }
+
+  handleInputChange = (element) => {
+    this.props.typedString(element.target.value)
+    // this.setState({ stringToSearch: string });
+    // console.log(this.state.stringToSearch)
+    // console.log(element)
   }
 
-  handleInputChange = (string) => {
-    this.setState({ queryString: string });
-  }
+  // handleSubmit = () => {
+  //   this.props.submitSearch()
+  // }
 
   render() {
-    let { queryString } = this.state.queryString;
+    let {stringToSearch} = this.props;
     return (
-      <form onSubmit = { this.handleSubmit }>
+      <form>
         <input
           placeholder = "¿Qué juego quieres buscar?"
           type = "text" 
-          value = { queryString }
-          onChange = { element => this.handleInputChange(element.currentTarget.value) }
+          value = {stringToSearch}
+          onChange = { element => this.handleInputChange(element)}
         />
       </form>
     )
