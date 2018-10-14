@@ -1,25 +1,38 @@
 import React from 'react';
+import SearchBar from './SearchBar';
+import axios from 'axios';
 // import { Link } from 'react-router-dom';
 
 export default class Board extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      results: []
+    };
+    this.petition = axios.create({
+      baseURL: 'http://localhost:3000/api/auth <<<<<XXXXXX CAMBIAR!!!!!>>>>>',
+      withCredentials: false
+    });
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] })
-  // }
+  getItems = (queryString) => {
+    return this.petition.get('/ruta del server que usaré', {queryString})
+      .then( response => {
+        this.setState({
+          results: response.data, o de la manera que sea (data.data, por ejemplo)
+        })
+      })
+  }
 
-  // handleLogout = (e) => {
-  //   this.props.logout()
-  // }
+///USARÉ queryString para la petición AXIOS
 
   render() {
     return(
       <div>
         <p>Aquí va la searchBar</p>
+        <SearchBar search={queryString =>this.getItems(queryString)}/>
         <div>
+          <p>Aquí tengo que pintar this.state.results, un array, habrá que hace un map de un componente Item, pasándole la información de ese array. Cada componente Item tendrá un link que abrirá una ventana a la info más detallada del juego. Hay que ver cómo hacer eso, algo tipo alert, un modal quizá o algo así.</p>
           <ul>
             <li>Juego 1</li>
             <li>Juego 2</li>
@@ -31,24 +44,6 @@ export default class Board extends React.Component {
           Aquí, dentro de una lista renderizaré un componente Item, con los datos de cada juego, y los desplegaré en una lista. Tendré que hacer un map supongo. Ver ejemplo de nutrition, countries o beers.
           Probablemente tenga que guardar ese Jason en el state...o utilizarlo tal cuál según venga de las props, no sé... </p>
         </div>
-        {/* if (this.state.loggedInUser) {
-          return (
-            <nav className="navbar">
-              <img src={this.state.loggedInUser.avatarPath} alt=""></img>
-              <h2>{this.state.loggedInUser.username}</h2>
-              <Link to="/"><button onClick={this.handleLogout}>Log out</button></Link>
-            </nav>
-          )
-        } else {
-          return (
-            <div>
-              <nav className="navbar">
-              <Link to="/signup"><button>Sign up</button></Link>
-              <Link to="/login"><button>Log in</button></Link>
-              </nav>
-            </div>
-          )
-        } */}
       </div>
     )
   }

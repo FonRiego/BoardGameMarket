@@ -1,11 +1,6 @@
 import React from 'react';
 // import logo from './logo.svg';
 import { Link } from 'react-router-dom';
-// import Signup from './components/auth/Signup';
-// import Login from './components/auth/Login';
-// import AuthService from './components/auth/AuthService';
-// import Navbar from './components/Navbar';
-// import Board from './components/Board';
 
 
 export const Home = () => {
@@ -17,12 +12,12 @@ export const Home = () => {
       <br/>
       1.- Busca juegos a la venta --> va al dashboard principal, no necesario login.
       <br/>
-      2.- Pon juegos a la venta --> va a tu página de perfil, previo login. Si te logeas con el botón de arriba, o ya estás logueado, directamente a tu perfil.
+      2.- Pon juegos a la venta --> 'Date de alta como usuario o egístrate para poder poner tus juegos a la venta' --> con los links a login y signup, igual que en la navbar arriba. Tras log, queda en '/' pero al estar ya registrado te lleva a profile, donde se podrá añadir juegos a la venta.
     </p>
     <Link to={"/board"}>
       <button style={{fontSize: 80}}>Ir al Board</button>
     </Link>
-    <button style={{fontSize: 80}}>Pon juegos a la venta</button>
+    <button style={{fontSize: 80}}>Pon juegos a la venta: Date de alta o regístrate</button>
     </div>
   )
 }

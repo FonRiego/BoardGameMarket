@@ -3,14 +3,13 @@ const Schema   = mongoose.Schema;
 
 const itemSchema = new Schema({
   name: String,
-  yearPublished: Number,
-  minPlayers: Number,
-  maxPlayers: Number,
-  playingTime: Number,
-  description: String,
-  thumbnail: String,
-  condition: String,
-  ownerUser: [{type: Schema.Types.ObjectId, ref: "User"}]
+  yearPublished: String,
+  image_url: String,
+  condition: {
+    type: String,
+    enum: ["Nuevo", "Como Nuevo", "Muy Buena", "Buena", "Normal", "Mala"]
+  },
+  ownerUser: {type: Schema.Types.ObjectId, ref:'User'},
 
 }, {
   timestamps: {
