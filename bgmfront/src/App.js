@@ -11,6 +11,7 @@ import {Home} from './components/Home';
 const Routes = () => {
   return [
     <Route exact path="/board" key="r1" component={Board} />
+    // <Route exact path="/:itemId"
   ]
 };
 

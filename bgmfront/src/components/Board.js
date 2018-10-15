@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import axios from 'axios';
-// import { Link } from 'react-router-dom';
+import {LittleItem} from './LittleItem';
 
 export default class Board extends React.Component {
   constructor(props) {
@@ -20,7 +20,6 @@ export default class Board extends React.Component {
   }
 
   getItems = (stringToSearch) => {
-    console.log(stringToSearch)
     return this.service.post('/', {stringToSearch})
       .then( res => {
         let results = res.data
@@ -29,36 +28,16 @@ export default class Board extends React.Component {
       .catch(e => console.log(e))
   }
 
-///USARÉ stringToSearch para la petición AXIOS
 
   render() {
     let {results} = this.state;
-    // console.log(results)
   
     return(
       <div>
-        <p>Aquí va la searchBar</p>
         <SearchBar submitSearch = { stringToSearch => this.getItems(stringToSearch) }/>
-        <div>
-          <div>
-            {results.map(item => <p>{item.name} <img src={item.image_url} alt="" width="100px"/></p>)}
-          </div>
-          {/* <div>
-            <img src={results[0].image_url} alt=""/>
-            <p>{results.name}</p>
-          </div> */}
-
-          <p>Aquí tengo que pintar this.state.results, un array, habrá que hace un map de un componente Item, pasándole la información de ese array. Cada componente Item tendrá un link que abrirá una ventana a la info más detallada del juego. Hay que ver cómo hacer eso, algo tipo alert, un modal quizá o algo así.</p>
-          <ul>
-            <li>Juego 1</li>
-            <li>Juego 2</li>
-            <li>Juego 3</li>
-            <li>Juego 4</li>
-            <li>Juego 5</li>          
-          </ul>
-          <p>Por lo tanto, con la barra de búsqueda haré una petición axios hacia el server(tendré que guardar probablemente en el state el string de la búsqueda), que hará una búsqueda en la DB de Mongo, me devolverá un JSON con los resultados.
-          Aquí, dentro de una lista renderizaré un componente Item, con los datos de cada juego, y los desplegaré en una lista. Tendré que hacer un map supongo. Ver ejemplo de nutrition, countries o beers.
-          Probablemente tenga que guardar ese Jason en el state...o utilizarlo tal cuál según venga de las props, no sé... </p>
+        <div style={{border: "1px solid red", display: "flex", flexWrap: "wrap"}}>
+          {/* AQUÍ HAY QUE LLAMAR A UN COMPONENTE ITEM DENTRO DEL MAP Y PASARLE COMO PROPS CADA RESULT INDIVIDUAL */}
+          { results.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = {index}/>)}
         </div>
       </div>
     )

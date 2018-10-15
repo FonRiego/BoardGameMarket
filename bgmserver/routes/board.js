@@ -13,7 +13,7 @@ const Conversation = require('../models/Conversation')
 router.post('/', (req,res,next) => {
     let {stringToSearch} = req.body
     if (stringToSearch !== undefined) {
-        Item.find( { name: {$regex: `.*${stringToSearch}.*` }})
+        Item.find( { name: {$regex: `.*${stringToSearch}.*`, $options: "i" }})
             .populate('ownerUser')
             .then(itemList => res.status(200).json(itemList))
             .catch(e => next(e))
