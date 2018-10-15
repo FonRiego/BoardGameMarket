@@ -10,15 +10,20 @@ const Conversation = require('../models/Conversation')
 
 //////// RUTAS POR HACER!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // CRUD: RETRIEVE ITEMS
-router.get('/', (req,res,next) => {
-    // let stringToSearch = req.body.stringToSearch
-    Item.find()
-    // `/${stringToSearch}/i`
-    // Item.find({ $where: this.name.includes(stringToSearch)})
-        .populate('ownerUser')
-        .then(itemList => res.status(200).json(itemList))
-        .catch(e => next(e))
-})
+router.post('/', (req,res,next) => {
+    let {stringToSearch} = req.body
+    if (stringToSearch !== undefined) {
+        Item.find( { name: {$regex: `.*${stringToSearch}.*` }})
+            .populate('ownerUser')
+            .then(itemList => res.status(200).json(itemList))
+            .catch(e => next(e))
+    } else {
+        Item.find()
+            .populate('ownerUser')
+            .then(itemList => res.status(200).json(itemList))
+            .catch(e => next(e))
+    }
+})  
 
 // CRUD: CREATE
 // router.post('/',(req,res,next) => {

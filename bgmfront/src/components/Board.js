@@ -7,28 +7,23 @@ export default class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stringToSearch: "",
       results: []
     };
     this.service = axios.create({
       baseURL: 'http://localhost:3000/api/board',
     });
   }
-
-  handlestringToSearch = (stringToSearch) => {
-    this.setState({ stringToSearch: stringToSearch}, 
-    () => this.getItems())
+  
+  componentWillMount(){
+    let stringToSearch = ""
+    this.getItems(stringToSearch);
   }
-  // componentWillMount(){
-  //   this.getItems();
-  // }
 
-  getItems = () => {
-    // let {stringToSearch} = this.state;
-    return axios.get('http://localhost:3000/api/board')
+  getItems = (stringToSearch) => {
+    console.log(stringToSearch)
+    return this.service.post('/', {stringToSearch})
       .then( res => {
         let results = res.data
-        // console.log(response)
         this.setState({ results })
       })
       .catch(e => console.log(e))
@@ -37,20 +32,16 @@ export default class Board extends React.Component {
 ///USARÉ stringToSearch para la petición AXIOS
 
   render() {
-    let {results, stringToSearch} = this.state;
+    let {results} = this.state;
     // console.log(results)
   
     return(
       <div>
         <p>Aquí va la searchBar</p>
-        <SearchBar 
-          stringToSearch = { stringToSearch } 
-          typedString = { stringToSearch => this.handlestringToSearch(stringToSearch) }
-          // submitSearch = { this.getItems(stringToSearch) }
-        />
+        <SearchBar submitSearch = { stringToSearch => this.getItems(stringToSearch) }/>
         <div>
           <div>
-            {results.map(item => <p>{item.name}</p>)}
+            {results.map(item => <p>{item.name} <img src={item.image_url} alt="" width="100px"/></p>)}
           </div>
           {/* <div>
             <img src={results[0].image_url} alt=""/>

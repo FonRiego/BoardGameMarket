@@ -5,6 +5,12 @@ import React from 'react'
 //HABRÁ QUE HACER  OTRA DIFERENTE PARA BUSCAR JUEGOS PARA AÑADIR DE MI BASE DE DATOS GRANDE O ADAPTAR ESTA PARA PODER USARLA EN AMBOS CASOS.
 
 export default class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      stringToSearch: "",
+    };
+  }
 
   // handleSubmit() {
   //   let stringToSearch = this.state.stringToSearch;
@@ -14,28 +20,27 @@ export default class SearchBar extends React.Component {
   //   this.setState({ stringToSearch: "" });
   // }
 
-  handleInputChange = (element) => {
-    this.props.typedString(element.target.value)
-    // this.setState({ stringToSearch: string });
-    // console.log(this.state.stringToSearch)
-    // console.log(element)
+  handleInputChange = (string) => {
+    this.setState({ stringToSearch: string.target.value });
   }
 
-  // handleSubmit = () => {
-  //   this.props.submitSearch()
-  // }
+  handleSubmit = () => {
+    let {stringToSearch} = this.state
+    this.props.submitSearch(stringToSearch)
+  }
 
   render() {
     let {stringToSearch} = this.props;
     return (
-      <form>
+      <div>
         <input
           placeholder = "¿Qué juego quieres buscar?"
           type = "text" 
-          value = {stringToSearch}
+          value = { stringToSearch }
           onChange = { element => this.handleInputChange(element)}
         />
-      </form>
+        <button onClick = { () => this.handleSubmit()}>Busca juegos a la venta</button>
+      </div>
     )
   }
 }
