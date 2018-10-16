@@ -20,7 +20,7 @@ export default class Board extends React.Component {
   }
 
   getItems = (stringToSearch) => {
-    return this.service.post('/', {stringToSearch})
+    return this.service.post('/', { stringToSearch })
       .then( res => {
         let results = res.data
         this.setState({ results })
@@ -31,13 +31,14 @@ export default class Board extends React.Component {
 
   render() {
     let {results} = this.state;
+    let {userInfo} = this.props;
   
     return(
       <div>
         <SearchBar submitSearch = { stringToSearch => this.getItems(stringToSearch) }/>
-        <div style={{border: "1px solid red", display: "flex", flexWrap: "wrap"}}>
+        <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
           {/* AQUÍ HAY QUE LLAMAR A UN COMPONENTE ITEM DENTRO DEL MAP Y PASARLE COMO PROPS CADA RESULT INDIVIDUAL */}
-          { results.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = {index}/>)}
+          { results.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo }/>)}
         </div>
       </div>
     )

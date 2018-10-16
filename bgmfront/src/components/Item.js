@@ -7,24 +7,16 @@ import Popover from 'react-bootstrap/lib/Popover';
 import Tooltip from 'react-bootstrap/lib/Tooltip';
 
 export default class Item extends React.Component {
-  constructor({itemProps}) {
-    super({itemProps});
+  constructor({itemInfo, userInfo}) {
+    super({itemInfo, userInfo});
 
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
       show: false,
-      id: itemProps.itemInfo._id,
-      name: itemProps.itemInfo.name,
-      yearPublished: itemProps.itemInfo.yearPublished,
-      condition: itemProps.itemInfo.condition,
-      price: itemProps.itemInfo.price,
-      image_url: itemProps.itemInfo.image_url,
-      username: itemProps.itemInfo.ownerUser.username,
-      province: itemProps.itemInfo.ownerUser.province,
-      itemPublishedDate: itemProps.itemInfo.created_at.slice(0, 10)
-
+      owned: false
+      // name: itemInfo.name
     };
   }
 
@@ -36,6 +28,22 @@ export default class Item extends React.Component {
     this.setState({ show: true });
   }
 
+  handleDate() {
+    let itemPublishedDate = this.props.itemInfo.created_at.slice(0, 10);
+    let itemPublishedYear = itemPublishedDate.substr(0,4);
+    let itemPublishedMonth = itemPublishedDate.substr(5,2);
+    let itemPublishedDay = itemPublishedDate.substr(8,2);
+    return itemPublishedDay + "-" + itemPublishedMonth + "-" + itemPublishedYear;
+  }
+
+  componentWillMount() {
+    let ownerName = this.props.itemInfo.ownerUser.username;
+    let username = this.props.userInfo.username;
+    if (ownerName === username) {
+      this.setState({ owned: true })
+    }
+  }
+
   render() {
     const popover = (
       <Popover id="modal-popover" title="popover">
@@ -43,11 +51,11 @@ export default class Item extends React.Component {
       </Popover>
     );
     const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
-    let {id, name, yearPublished, condition, price, image_url, username, province, itemPublishedDate} = this.state;
-    let itemPublishedYear = itemPublishedDate.substr(0,4)
-    let itemPublishedMonth = itemPublishedDate.substr(5,2)
-    let itemPublishedDay = itemPublishedDate.substr(8,2)
-    let itemPublishedDayReordered = itemPublishedDay + "-" + itemPublishedMonth + "-" + itemPublishedYear
+
+    let {_id, name, yearPublished, condition, price, image_url} = this.props.itemInfo;
+    let ownerName = this.props.itemInfo.ownerUser.username;
+    let itemPublishedDayReordered = this.handleDate();
+    let owned = this.state.owned
 
     return (
       <div>
@@ -61,14 +69,18 @@ export default class Item extends React.Component {
           </Modal.Header>
           <Modal.Body style={{backgroundColor: "orange", display: "flex", flexWrap: "wrap"}}>
             <div>
-              <img src={image_url} alt={this.state.name} width="250px"/>
+              <img src={image_url} alt={name} width="250px"/>
             </div>
             <div style={{border: "1px solid red",  width:"500px"}}>
               <p>Precio: {price} €</p>
               <p>Estado: {condition}</p>
               <p>Año de Publicación: {yearPublished}</p>
-              <p>Usuario: {username}</p>
+              <p>Usuario: {ownerName}</p>
+              { owned && <p>Este juego es tuyo!</p> }
+              { !owned && <p>Propietario: {ownerName}</p>}
               <p>Puesto a la venta: {itemPublishedDayReordered}</p>
+
+
             </div>
            
 

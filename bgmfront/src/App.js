@@ -8,12 +8,15 @@ import Navbar from './components/Navbar';
 import Board from './components/Board';
 import {Home} from './components/Home';
 
-const Routes = () => {
-  return [
-    <Route exact path="/board" key="r1" component={Board} />
-    // <Route exact path="/:itemId"
-  ]
-};
+// const Routes = () => {
+//   return [
+//     <Route exact path="/" key="r1" component={Home} />,
+//     <Route exact path='/signup' component={() => <Signup getUser={this.getTheUser}/>}/>,
+//     <Route exact path='/login' component={() => <Login getUser={this.getTheUser}/>}/>,
+//     <Route exact path="/board" key="r2" component={() => <Board userInfo={this.state.loggedInUser}/>} />
+//     // <Route exact path="/:itemId"
+//   ]
+// };
 
 class App extends React.Component {
   constructor(props){
@@ -65,7 +68,12 @@ class App extends React.Component {
               <p>Aquí pintaré el profile</p>
               {/* <Profile/> */}
             </div>
-            <Routes/>
+            <Switch>
+              <Route exact path="/" key="r1" component={Home} />,
+              <Route exact path='/signup' component={() => <Signup getUser={this.getTheUser}/>}/>,
+              <Route exact path='/login' component={() => <Login getUser={this.getTheUser}/>}/>,
+              <Route exact path="/board" key="r1" component={() => <Board userInfo={this.state.loggedInUser}/>}/>
+            </Switch>
           </div>
         </div>
       );
@@ -81,7 +89,7 @@ class App extends React.Component {
                 <Route exact path="/" key="r1" component={Home} />,
                 <Route exact path='/signup' component={() => <Signup getUser={this.getTheUser}/>}/>,
                 <Route exact path='/login' component={() => <Login getUser={this.getTheUser}/>}/>,
-                <Route exact path="/board" key="r1" component={Board} />
+                <Route exact path="/board" key="r1" component={Board}/>
               </Switch>
             </div>
           </div>

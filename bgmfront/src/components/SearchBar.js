@@ -12,14 +12,6 @@ export default class SearchBar extends React.Component {
     };
   }
 
-  // handleSubmit() {
-  //   let stringToSearch = this.state.stringToSearch;
-  //   console.log(this.state.stringToSearch)
-
-  //   this.props.search(stringToSearch); 
-  //   this.setState({ stringToSearch: "" });
-  // }
-
   handleInputChange = (string) => {
     this.setState({ stringToSearch: string.target.value });
   }
