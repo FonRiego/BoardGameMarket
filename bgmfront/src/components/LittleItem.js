@@ -11,16 +11,17 @@ export const LittleItem = (props) => {
   let itemPublishedDayReordered = itemPublishedDay + "-" + itemPublishedMonth + "-" + itemPublishedYear
   return (
       <div style={{border: "1px solid red", display: "flex"}}>
-        <div style={{width: 160}}>
+        <div style={{width: 120}}>
           <h4> {props.itemInfo.name}</h4> 
-          <img src={props.itemInfo.image_url} alt={props.itemInfo.name} width="150px"/>
+          <img src={props.itemInfo.image_url} alt={props.itemInfo.name} width="100px"/>
         </div>
-        <div style={{width: 160}}>
+        <div style={{width: 120}}>
           {/* <p>Año de Publicación: {props.itemInfo.yearPublished}</p> */}
-          <p>Condición: {props.itemInfo.condition}</p>
+          {/* <p>Condición: {props.itemInfo.condition}</p> */}
+          <p>Precio: {props.itemInfo.price} €</p>
           {/* <p>Propietario: {props.itemInfo.ownerUser.username}</p> */}
           {/* <p>Provincia: {props.itemInfo.ownerUser.province}</p> */}
-          <p>Anuncio publicado el: {itemPublishedDayReordered}</p>
+          <p>Publicado el: {itemPublishedDayReordered}</p>
           <Item itemProps={props} />
         </div>
       </div>

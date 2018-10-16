@@ -54,6 +54,7 @@ let items = [
     yearPublished: "1995",
     image_url: "https://cf.geekdo-images.com/original/img/A-0yDJkve0avEicYQ4HoNO-HkK8=/0x0/pic2419375.jpg",
     condition: "Buena",
+    price: 20.50,
     ownerUser: "5bbf54e4589ee6175ef6a286"
   },
   {
@@ -61,6 +62,7 @@ let items = [
     yearPublished: "2008",
     image_url: "https://cf.geekdo-images.com/original/img/j-pfXZ_0GmOowohzD_T6NDAWGSA=/0x0/pic1534148.jpg",
     condition: "Nuevo",
+    price: 22.00,
     ownerUser: "5bbf54e4589ee6175ef6a286"
   },
   {
@@ -68,6 +70,7 @@ let items = [
     yearPublished: "2008",
     image_url: "https://cf.geekdo-images.com/original/img/m74nctbYaqTy03r8s_i_KTyvbYQ=/0x0/pic3483909.jpg",
     condition: "Muy Buena",
+    price: 18.25,
     ownerUser: "5bbf54e4589ee6175ef6a287"
   },
   {
@@ -75,6 +78,7 @@ let items = [
     yearPublished: "2000",
     image_url: "https://cf.geekdo-images.com/original/img/o4p6f88SGE899BTNMzTvERVWZ-M=/0x0/pic2337577.jpg",
     condition: "Como Nuevo",
+    price: 14.00,
     ownerUser: "5bbf54e4589ee6175ef6a287"
   },  
   {
@@ -82,6 +86,7 @@ let items = [
     yearPublished: "2007",
     image_url: "https://cf.geekdo-images.com/original/img/xeBBIO9BN7HGMxQdTw5zk5Hxou8=/0x0/pic236169.jpg",
     condition: "Como Nuevo",
+    price: 26.00,
     ownerUser: "5bbf5ebfa81554177979ead0"
   },
   {
@@ -89,6 +94,7 @@ let items = [
     yearPublished: "2015",
     image_url: "https://cf.geekdo-images.com/original/img/M6wL1YFgW-PsdtJ328m2QiJf1K8=/0x0/pic3376065.jpg",
     condition: "Nuevo",
+    price: 17.50,
     ownerUser: "5bbf5ebfa81554177979ead0"
   }
 ]

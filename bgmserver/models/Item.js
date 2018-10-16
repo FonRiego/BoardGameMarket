@@ -7,9 +7,10 @@ const itemSchema = new Schema({
   image_url: String,
   condition: {
     type: String,
-    enum: ["Nuevo", "Como Nuevo", "Muy Buena", "Buena", "Normal", "Mala"]
+    enum: ["Nuevo", "Como Nuevo", "Muy Bueno", "Bueno", "Normal", "Malo"]
   },
-  ownerUser: {type: Schema.Types.ObjectId, ref:'User'},
+  price: Number,
+  ownerUser: {type: Schema.Types.ObjectId, ref:'User'}
 
 }, {
   timestamps: {
