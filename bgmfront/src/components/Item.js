@@ -7,15 +7,15 @@ import Popover from 'react-bootstrap/lib/Popover';
 import Tooltip from 'react-bootstrap/lib/Tooltip';
 
 export default class Item extends React.Component {
-  constructor({itemInfo, userInfo}) {
-    super({itemInfo, userInfo});
+  constructor() {
+    super();
 
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
       show: false,
-      owned: false
+      owned: false,
       // name: itemInfo.name
     };
   }
@@ -37,22 +37,24 @@ export default class Item extends React.Component {
   }
 
   componentWillMount() {
-    let ownerName = this.props.itemInfo.ownerUser.username;
-    let username = this.props.userInfo.username;
-    if (ownerName === username) {
-      this.setState({ owned: true })
+    if (this.props.userInfo) {
+      let ownerName = this.props.itemInfo.ownerUser.username;
+      let username = this.props.userInfo.username;
+      if (ownerName === username) {
+       this.setState({ owned: true })
+      }
     }
   }
 
   render() {
-    const popover = (
-      <Popover id="modal-popover" title="popover">
-        very popover. such engagement
-      </Popover>
-    );
-    const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
+    // const popover = (
+    //   <Popover id="modal-popover" title="popover">
+    //     very popover. such engagement
+    //   </Popover>
+    // );
+    // const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
 
-    let {_id, name, yearPublished, condition, price, image_url} = this.props.itemInfo;
+    let { name, yearPublished, condition, price, image_url} = this.props.itemInfo;
     let ownerName = this.props.itemInfo.ownerUser.username;
     let itemPublishedDayReordered = this.handleDate();
     let owned = this.state.owned
@@ -75,7 +77,6 @@ export default class Item extends React.Component {
               <p>Precio: {price} €</p>
               <p>Estado: {condition}</p>
               <p>Año de Publicación: {yearPublished}</p>
-              <p>Usuario: {ownerName}</p>
               { owned && <p>Este juego es tuyo!</p> }
               { !owned && <p>Propietario: {ownerName}</p>}
               <p>Puesto a la venta: {itemPublishedDayReordered}</p>

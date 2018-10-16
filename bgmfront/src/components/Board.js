@@ -37,7 +37,6 @@ export default class Board extends React.Component {
       <div>
         <SearchBar submitSearch = { stringToSearch => this.getItems(stringToSearch) }/>
         <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
-          {/* AQUÍ HAY QUE LLAMAR A UN COMPONENTE ITEM DENTRO DEL MAP Y PASARLE COMO PROPS CADA RESULT INDIVIDUAL */}
           { results.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo }/>)}
         </div>
       </div>

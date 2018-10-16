@@ -9,7 +9,7 @@ class AuthService {
   }
 
   signup = (username, password, province, avatarName, avatarPath) => {
-    return this.service.post('/signup', {username, password, province, avatarName, avatarPath})
+    return this.service.post('/signup', {username, password, avatarName, avatarPath})
     .then(response => response.data)
   }
 
@@ -27,6 +27,12 @@ class AuthService {
     return this.service.get('/logout',)
     .then(response => response.data)
   }
+
+  // update = (username, password, id) => {
+  //   return this.service.put(`/update/${id}`, { username, password })
+  //   .then(response => response.data)
+  // }
+
 }
 
 export default AuthService;

@@ -24,7 +24,6 @@ let users = [
     password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
     avatarName: "",
     avatarPath: "/images/user_placeholder.png",
-    province: "Madrid",
     followedItems: []
   },
   {
@@ -33,7 +32,6 @@ let users = [
     password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
     avatarName: "",
     avatarPath: "/images/user_placeholder.png",
-    province: "Zamora",
     followedItems: []
   },
   {
@@ -42,7 +40,6 @@ let users = [
     password:"$2b$10$cre2tVzxhr12J0qKA/NKTOK4JIAOq.JMoDel3E0Uat5l1B7FAsgfq",
     avatarName: "",
     avatarPath:"/images/user_placeholder.png",
-    province:"Zamora",
     followedItems: []
   }
 
@@ -53,7 +50,7 @@ let items = [
     name: "Catan",
     yearPublished: "1995",
     image_url: "https://cf.geekdo-images.com/original/img/A-0yDJkve0avEicYQ4HoNO-HkK8=/0x0/pic2419375.jpg",
-    condition: "Buena",
+    condition: "Bueno",
     price: 20.50,
     ownerUser: "5bbf54e4589ee6175ef6a286"
   },
@@ -69,7 +66,7 @@ let items = [
     name: "Dixit",
     yearPublished: "2008",
     image_url: "https://cf.geekdo-images.com/original/img/m74nctbYaqTy03r8s_i_KTyvbYQ=/0x0/pic3483909.jpg",
-    condition: "Muy Buena",
+    condition: "Muy Bueno",
     price: 18.25,
     ownerUser: "5bbf54e4589ee6175ef6a287"
   },

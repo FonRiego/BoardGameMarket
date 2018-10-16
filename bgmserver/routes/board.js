@@ -10,7 +10,7 @@ const Conversation = require('../models/Conversation')
 
 //////// RUTAS POR HACER!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // CRUD: RETRIEVE ITEMS
-router.post('/', (req,res,next) => {
+router.post('/', (req, res, next) => {
     let {stringToSearch} = req.body
     if (stringToSearch !== undefined) {
         Item.find( { name: {$regex: `.*${stringToSearch}.*`, $options: "i" }})

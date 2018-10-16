@@ -20,7 +20,7 @@ const login = (req, user) => {
 
 router.post('/signup', (req, res, next) => {
   //VALORAR MÁS DATOS: EMAIL, ETC.
-  const {username, password, province, avatarName, avatarPath} = req.body;
+  const { username, password, avatarName, avatarPath } = req.body;
   if (!username || !password){
     next(new Error('You must provide valid username and password'));
   }
@@ -32,15 +32,28 @@ router.post('/signup', (req, res, next) => {
     return new User({
       username,
       password: hashPass,
-      province,
       avatarName,
       avatarPath
     }).save();
   })
   .then( savedUser => login(req, savedUser))
-  .then( user => res.json({status: 'Signup & login successfull', user}))
+  .then( user => res.json({ status: 'Signup & login successfull', user }))
   .catch(e => next(e));
 });
+
+// router.put('/update/:userId', (req, res, next) => {
+//   const { username, password } = req.body
+//   const { userId } = req.params
+//   console.log(userId)
+//   User.findOne({ username })
+//   .then( foundUser => {
+//     if (foundUser) throw new Error('Username already exists');
+//     const salt     = bcrypt.genSaltSync(bcryptSalt);
+//     const hashPass = bcrypt.hashSync(password, salt);
+//     User.findByIdAndUpdate(userId, { username, password: hashPass }, { new: true })
+//         .then((user) => res.status(200).json({ status: 'user updated', user }))
+//   })
+// });
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
@@ -51,9 +64,6 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
-
-
-// ?????
 router.get('/currentuser', (req,res,next) => {
   if(req.user){
     res.status(200).json(req.user);

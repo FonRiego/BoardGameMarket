@@ -7,13 +7,12 @@ import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
 import Popover from 'react-bootstrap/lib/Popover';
 import Tooltip from 'react-bootstrap/lib/Tooltip';
 
-class Signup extends React.Component {
+class EditUser extends React.Component {
   constructor(props){
     super(props);
-    this.state = { 
+    this.state = {
       username: "", 
       password: "",
-      province: "",
       show: true
     };
     this.service = new AuthService();
@@ -24,28 +23,24 @@ class Signup extends React.Component {
     
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
-    const province = this.state.province;
-
-    this.service.signup(username, password, province)
+    let {username, password} = this.state
+    let id = this.props.userInfo._id
+    console.log(id)
+    
+    this.service.update(username, password, id)
     .then( response => {
-        this.setState({
-            username: "", 
-            password: "",
-            province: ""
-        });
+        this.setState({ username: "", password: "" });
         this.props.getUser(response.user)
-    }).then ( e => {
-      this.props.history.push("/");
-      //CUANDO TENGA PROFILE, SERÁ PROFILE Y NO "/"
     })
+    // .then ( e => {
+    //   this.props.history.push("/board");
+    //   //CUANDO TENGA PROFILE, SERÁ PROFILE Y NO "/"
+    // })
     .catch( error => console.log(error))
   }
 
   handleClose() {
     this.setState({ show: false });
-    this.props.history.push("/")
   }
 
   handleShow() {
@@ -53,8 +48,8 @@ class Signup extends React.Component {
   }
 
   handleChange = (event) => {  
-    const {name, value} = event.target;
-    this.setState({[name]: value});
+    let { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
   render() {
@@ -62,7 +57,7 @@ class Signup extends React.Component {
       <div>
         <Modal show={this.state.show} onHide={this.handleClose} style={{color: "white"}} bsSize="large">
           <Modal.Header style={{backgroundColor: "blue"}} closeButton>
-            <Modal.Title>Crea una nueva cuenta</Modal.Title>
+            <Modal.Title>Rellena los datos que quieras modificar</Modal.Title>
           </Modal.Header>
           <Modal.Body style={{display: "flex", flexDirection: "column", flexWrap: "wrap", color: "blue"}}>
             <div style={{border: "1px solid red",  width:"500px"}}>
@@ -71,7 +66,7 @@ class Signup extends React.Component {
                   <label>Nombre de usuario:</label>
                   <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
                 </fieldset>
-            
+
                 <fieldset>
                   <label>Contraseña:</label>
                   <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
@@ -79,7 +74,7 @@ class Signup extends React.Component {
 
             {/* FALTA AÑADIR SUBIR IMAGEN*/}
             
-                <input type="submit" value="Sign up" />
+                <input type="submit" value="Edita" />
               </form>
             </div>
           </Modal.Body>
@@ -92,4 +87,4 @@ class Signup extends React.Component {
   }
 }
 
-export default withRouter(Signup);
+export default withRouter(EditUser);

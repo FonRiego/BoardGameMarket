@@ -7,6 +7,8 @@ import AuthService from './components/auth/AuthService';
 import Navbar from './components/Navbar';
 import Board from './components/Board';
 import {Home} from './components/Home';
+import Profile from './components/Profile'
+// import EditUser from './components/auth/EditUser';
 
 // const Routes = () => {
 //   return [
@@ -65,15 +67,12 @@ class App extends React.Component {
               <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
             </header>
             <div className="main-container">
-              <p>Aquí pintaré el profile</p>
-              {/* <Profile/> */}
+              <Switch>
+                <Route exact path="/" component={() => <Profile userInfo={this.state.loggedInUser}/>}/>
+                <Route exact path="/board" component={() => <Board userInfo={this.state.loggedInUser}/>}/>
+                {/* <Route exact path="/edituser" key="r3" component={() => <EditUser userInfo={this.state.loggedInUser} getUser={this.getTheUser}/>}/> */}
+              </Switch>
             </div>
-            <Switch>
-              <Route exact path="/" key="r1" component={Home} />,
-              <Route exact path='/signup' component={() => <Signup getUser={this.getTheUser}/>}/>,
-              <Route exact path='/login' component={() => <Login getUser={this.getTheUser}/>}/>,
-              <Route exact path="/board" key="r1" component={() => <Board userInfo={this.state.loggedInUser}/>}/>
-            </Switch>
           </div>
         </div>
       );
@@ -86,10 +85,10 @@ class App extends React.Component {
             </header>
             <div className="main-container">
               <Switch>
-                <Route exact path="/" key="r1" component={Home} />,
+                <Route exact path="/" component={Home} />,
                 <Route exact path='/signup' component={() => <Signup getUser={this.getTheUser}/>}/>,
                 <Route exact path='/login' component={() => <Login getUser={this.getTheUser}/>}/>,
-                <Route exact path="/board" key="r1" component={Board}/>
+                <Route exact path="/board" component={Board}/>
               </Switch>
             </div>
           </div>

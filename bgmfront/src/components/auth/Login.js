@@ -45,7 +45,7 @@ class Login extends React.Component {
           error: true
         });
       })
-    this.props.history.push("/board");
+    this.props.history.push("/");
     //CUANDO TENGA PROFILE, SERÁ PROFILE Y NO "/""
   }
 

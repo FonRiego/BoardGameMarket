@@ -9,7 +9,6 @@ export const LittleItem = ({itemInfo, userInfo}) => {
   let itemPublishedMonth = itemPublishedDate.substr(5,2)
   let itemPublishedDay = itemPublishedDate.substr(8,2)
   let itemPublishedDayReordered = itemPublishedDay + "-" + itemPublishedMonth + "-" + itemPublishedYear
-  console.log(userInfo)
   return (
       <div style={{border: "1px solid red", display: "flex"}}>
         <div style={{width: 120}}>
