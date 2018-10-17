@@ -8,22 +8,24 @@ const Message = require('../models/Message')
 const Conversation = require('../models/Conversation')
 
 
+//BORRAR!!!!!!!!!!
+
 //////// RUTAS POR HACER!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // CRUD: RETRIEVE ITEMS
-router.post('/', (req, res, next) => {
-    let {stringToSearch} = req.body
-    if (stringToSearch !== undefined) {
-        Item.find( { name: {$regex: `.*${stringToSearch}.*`, $options: "i" }})
-            .populate('ownerUser')
-            .then(itemList => res.status(200).json(itemList))
-            .catch(e => next(e))
-    } else {
-        Item.find()
-            .populate('ownerUser')
-            .then(itemList => res.status(200).json(itemList))
-            .catch(e => next(e))
-    }
-})  
+// router.post('/search', (req, res, next) => {
+//     let {stringToSearch} = req.body
+//     if (stringToSearch !== undefined) {
+//         Item.find( { name: {$regex: `.*${stringToSearch}.*`, $options: "i" }})
+//             .populate('ownerUser')
+//             .then(itemList => res.status(200).json(itemList))
+//             .catch(e => next(e))
+//     } else {
+//         Item.find()
+//             .populate('ownerUser')
+//             .then(itemList => res.status(200).json(itemList))
+//             .catch(e => next(e))
+//     }
+// })  
 
 // CRUD: CREATE
 // router.post('/',(req,res,next) => {

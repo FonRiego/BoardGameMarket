@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from './SearchBar';
-import axios from 'axios';
+import ItemService from './ItemService'
 import {LittleItem} from './LittleItem';
 
 export default class Board extends React.Component {
@@ -9,9 +9,7 @@ export default class Board extends React.Component {
     this.state = {
       results: []
     };
-    this.service = axios.create({
-      baseURL: 'http://localhost:3000/api/board',
-    });
+    this.service = new ItemService();
   }
   
   componentWillMount(){
@@ -20,14 +18,12 @@ export default class Board extends React.Component {
   }
 
   getItems = (stringToSearch) => {
-    return this.service.post('/', { stringToSearch })
-      .then( res => {
-        let results = res.data
+    return this.service.searchItems( stringToSearch )
+      .then( results => {
         this.setState({ results })
       })
       .catch(e => console.log(e))
   }
-
 
   render() {
     let {results} = this.state;
