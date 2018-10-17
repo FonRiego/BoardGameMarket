@@ -3,13 +3,18 @@ import axios from 'axios';
 class ItemService {
   constructor() {
     this.service = axios.create({
-      baseURL: 'http://localhost:3000/api/item',
+      baseURL: "http://localhost:3000/api/item",
       withCredentials: true
     });
   }
 
-  findOwnedItems = (userId) => {
-    return this.service.post('/owned', {userId})
+  findProfileItems = () => {
+    return this.service.get("/profile")
+    .then(response => response.data)
+  }
+
+  deleteItem  = (itemId) => {
+    return this.service.post("/delete", {itemId})
     .then(response => response.data)
   }
 

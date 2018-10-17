@@ -38,6 +38,9 @@ class App extends React.Component {
     .then(() => {
       this.setState({ loggedInUser: null });
     })
+    .then(() => {
+      this.props.history.push("/")
+    })
   }
 
   fetchUser(){
@@ -68,7 +71,7 @@ class App extends React.Component {
             </header>
             <div className="main-container">
               <Switch>
-                <Route exact path="/" component={() => <Profile userInfo={this.state.loggedInUser}/>}/>
+                <Route exact path="/profile" component={() => <Profile userInfo={this.state.loggedInUser}/>}/>
                 <Route exact path="/board" component={() => <Board userInfo={this.state.loggedInUser}/>}/>
                 {/* <Route exact path="/edituser" key="r3" component={() => <EditUser userInfo={this.state.loggedInUser} getUser={this.getTheUser}/>}/> */}
               </Switch>

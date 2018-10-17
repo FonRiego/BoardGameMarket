@@ -1,7 +1,7 @@
 // auth/Signup.js
 import React from 'react';
 import AuthService from './AuthService'
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
 import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
@@ -45,7 +45,7 @@ class Login extends React.Component {
           error: true
         });
       })
-    this.props.history.push("/");
+    this.props.history.push("/profile");
     //CUANDO TENGA PROFILE, SERÁ PROFILE Y NO "/""
   }
 
@@ -74,17 +74,18 @@ class Login extends React.Component {
             <div style={{border: "1px solid red",  width:"500px"}}>
             <form onSubmit={this.handleFormSubmit}>
               <fieldset>
-                <label>Username:</label>
+                <label>Nombre de usuario:</label>
                 <input type="text" name="username" value={this.state.username} onChange={e => this.handleChange(e)} />
               </fieldset>
 
               <fieldset>
-                <label>Password:</label>
+                <label>Contraseña:</label>
                 <input type="password" name="password" value={this.state.password} onChange={e => this.handleChange(e)} />
               </fieldset>
 
-              <input type="submit" value="Login" />
+              <input type="submit" value="Inicia Sesión" />
             </form>
+            <Link to="/signup"><button>O Regístrate</button></Link>
 
             <h1>{this.state.error ? 'Error' : ''}</h1>
             </div>

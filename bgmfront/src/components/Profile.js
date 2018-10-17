@@ -8,12 +8,28 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ownedItems: []
+      ownedItems: [],
+      followedItems: []
     };
     this.service = new ItemService();
   }
 
-  // createItem() {
+  componentDidMount() {
+    this.findProfileItems()
+  }
+
+  findProfileItems() {
+    this.service.findProfileItems()
+    .then( res => {
+      this.setState ({
+        ownedItems: res.ownedList,
+        followedItems: res.followedList.followedItems
+      })
+      })
+    .catch(e => console.log(e))
+  }
+
+    // createItem() {
   //   let {results} = this.state
   //   this.service.createItem()
   //   .then((itemCreted) => {
@@ -21,19 +37,17 @@ export default class Profile extends React.Component {
   //   })
   // }
 
-  componentWillMount() {
-    let userId = this.props.userInfo._id
-    this.service.findOwnedItems(userId)
+  deleteItem(itemId) {
+    this.service.deleteItem(itemId)
     .then( res => {
-      this.setState({ ownedItems: res })
-    })
+      this.findProfileItems()
+      })
     .catch(e => console.log(e))
-    //búsqueda para rellenar results, es un find de items populando owneruser, en la que coincida el id del owneruser con el id del ususario, que lo recibimos via props en userInfo. Luego setState a results
+
   }
 
-
   render() {
-    let {ownedItems} = this.state;
+    let {ownedItems, followedItems} = this.state;
     let {userInfo} = this.props;
     return (
       <div>
@@ -43,12 +57,20 @@ export default class Profile extends React.Component {
         {/* Tendrá un link */}
         <h4>Juegos que tienes a la venta:</h4>
         <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
-          { ownedItems.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo }/>)}
+          { ownedItems.map( (oneItemInfo, index) => <LittleItem 
+          itemInfo = { oneItemInfo } 
+          key = { index } 
+          userInfo = { userInfo }
+          deleteItem = { (itemId) => this.deleteItem(itemId) }
+          />)}
         </div>
 
         <h4>Juegos que sigues:</h4>
+        <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
+          { followedItems.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo }/>)}
+        </div>
 
-
+        
 
 
       </div>

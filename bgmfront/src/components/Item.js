@@ -16,6 +16,7 @@ export default class Item extends React.Component {
     this.state = {
       show: false,
       owned: false,
+      followed: false
       // name: itemInfo.name
     };
   }
@@ -40,9 +41,11 @@ export default class Item extends React.Component {
     if (this.props.userInfo) {
       let ownerName = this.props.itemInfo.ownerUser.username;
       let username = this.props.userInfo.username;
+      // let followed = 
       if (ownerName === username) {
        this.setState({ owned: true })
       }
+      // if ()
     }
   }
 
@@ -77,9 +80,11 @@ export default class Item extends React.Component {
               <p>Precio: {price} €</p>
               <p>Estado: {condition}</p>
               <p>Año de Publicación: {yearPublished}</p>
-              { owned && <p>Este juego es tuyo!</p> }
-              { !owned && <p>Propietario: {ownerName}</p>}
               <p>Puesto a la venta: {itemPublishedDayReordered}</p>
+              { owned && <button style={{ color: "orange" }} onClick={this.props.deleteItem} >Quita este juego de la venta</button>}
+              { !owned && <p>Propietario: {ownerName}</p>}
+              { !owned && <button style={{ color: "orange" }}>Seguir Juego</button>}
+              
 
 
             </div>

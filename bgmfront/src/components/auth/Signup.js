@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthService from './AuthService';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
 import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
@@ -37,7 +37,7 @@ class Signup extends React.Component {
         });
         this.props.getUser(response.user)
     }).then ( e => {
-      this.props.history.push("/");
+      this.props.history.push("/profile");
       //CUANDO TENGA PROFILE, SERÁ PROFILE Y NO "/"
     })
     .catch( error => console.log(error))
@@ -79,8 +79,10 @@ class Signup extends React.Component {
 
             {/* FALTA AÑADIR SUBIR IMAGEN*/}
             
-                <input type="submit" value="Sign up" />
+                <input type="submit" value="Regístrate" />
               </form>
+              
+              <Link to="/login"><button>O Inicia sesión</button></Link>
             </div>
           </Modal.Body>
           <Modal.Footer style={{backgroundColor: "blue"}}>

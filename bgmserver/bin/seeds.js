@@ -40,13 +40,14 @@ let users = [
     password:"$2b$10$cre2tVzxhr12J0qKA/NKTOK4JIAOq.JMoDel3E0Uat5l1B7FAsgfq",
     avatarName: "",
     avatarPath:"/images/user_placeholder.png",
-    followedItems: []
+    followedItems: ["5bc62d8c8e81211afae99f7c", "5bc62d8c8e81211afae99f7d", "5bc62d8c8e81211afae99f7e", "5bc62d8c8e81211afae99f7f" ]
   }
 
 ]
 
 let items = [
   {
+    _id: "5bc62d8c8e81211afae99f7c",
     name: "Catan",
     yearPublished: "1995",
     image_url: "https://cf.geekdo-images.com/original/img/A-0yDJkve0avEicYQ4HoNO-HkK8=/0x0/pic2419375.jpg",
@@ -55,6 +56,7 @@ let items = [
     ownerUser: "5bbf54e4589ee6175ef6a286"
   },
   {
+    _id: "5bc62d8c8e81211afae99f7d",
     name: "Pandemic",
     yearPublished: "2008",
     image_url: "https://cf.geekdo-images.com/original/img/j-pfXZ_0GmOowohzD_T6NDAWGSA=/0x0/pic1534148.jpg",
@@ -63,6 +65,7 @@ let items = [
     ownerUser: "5bbf54e4589ee6175ef6a286"
   },
   {
+    _id: "5bc62d8c8e81211afae99f7e",
     name: "Dixit",
     yearPublished: "2008",
     image_url: "https://cf.geekdo-images.com/original/img/m74nctbYaqTy03r8s_i_KTyvbYQ=/0x0/pic3483909.jpg",
@@ -71,6 +74,7 @@ let items = [
     ownerUser: "5bbf54e4589ee6175ef6a287"
   },
   {
+    _id: "5bc62d8c8e81211afae99f7f",
     name: "Carcassonne",
     yearPublished: "2000",
     image_url: "https://cf.geekdo-images.com/original/img/o4p6f88SGE899BTNMzTvERVWZ-M=/0x0/pic2337577.jpg",
@@ -79,6 +83,7 @@ let items = [
     ownerUser: "5bbf54e4589ee6175ef6a287"
   },  
   {
+    _id: "5bc62d8c8e81211afae99f80",
     name: "Through the Ages: A Story of Civilization",
     yearPublished: "2007",
     image_url: "https://cf.geekdo-images.com/original/img/xeBBIO9BN7HGMxQdTw5zk5Hxou8=/0x0/pic236169.jpg",
@@ -87,6 +92,7 @@ let items = [
     ownerUser: "5bbf5ebfa81554177979ead0"
   },
   {
+    _id: "5bc62d8c8e81211afae99f81",
     name:"7 Wonders Duel",
     yearPublished: "2015",
     image_url: "https://cf.geekdo-images.com/original/img/M6wL1YFgW-PsdtJ328m2QiJf1K8=/0x0/pic3376065.jpg",
