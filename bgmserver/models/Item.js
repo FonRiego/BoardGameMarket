@@ -3,7 +3,7 @@ const Schema   = mongoose.Schema;
 
 const itemSchema = new Schema({
   name: String,
-  yearPublished: String,
+  yearpublished: String,
   image_url: String,
   condition: {
     type: String,

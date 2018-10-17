@@ -73,6 +73,7 @@ class App extends React.Component {
               <Switch>
                 <Route exact path="/profile" component={() => <Profile userInfo={this.state.loggedInUser}/>}/>
                 <Route exact path="/board" component={() => <Board userInfo={this.state.loggedInUser}/>}/>
+                {/* <Route path="/:gameId" component={AddGameForm}/> */}
                 {/* <Route exact path="/edituser" key="r3" component={() => <EditUser userInfo={this.state.loggedInUser} getUser={this.getTheUser}/>}/> */}
               </Switch>
             </div>

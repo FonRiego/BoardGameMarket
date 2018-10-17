@@ -40,7 +40,7 @@ router.post("/delete", (req, res, next) => {
 })
 
 router.post('/searchItems', (req, res, next) => {
-  let {stringToSearch} = req.body
+  const {stringToSearch} = req.body;
   Item.find( { name: {$regex: `${stringToSearch}`, $options: "i" }})
   .populate('ownerUser')
   .then(itemList => res.status(200).json(itemList))
@@ -48,11 +48,27 @@ router.post('/searchItems', (req, res, next) => {
 })  
 
 router.post('/searchGames', (req, res, next) => {
-  let {stringToSearch} = req.body
+  const {stringToSearch} = req.body;
   Game.find( { "name.text": {$regex: `${stringToSearch}`, $options: "i" }})
   .then(itemList => {res.status(200).json(itemList)})
   .catch(e => next(e))
 })  
+
+router.post('/addItem', (req, res, next) => {
+  const {name, yearpublished, image_url, price, condition} = req.body;
+  const id = req.user._id;
+  console.log(name, yearpublished, image_url, price, condition, id)
+  return new Item({
+    name,
+    yearpublished,
+    image_url,
+    price,
+    condition,
+    ownerUser: id
+  }).save()
+  .then( item => res.json({ status: 'New Item Creatd', item }))
+  .catch(e => next(e));
+})
 
 
 

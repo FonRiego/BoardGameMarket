@@ -2,6 +2,9 @@ import React from 'react';
 import ItemService from './ItemService'
 import {LittleItem} from './LittleItem'
 import AddItem from './AddItem'
+import SearchBar from './SearchBar';
+import LittleGame from './LittleGame';
+import AddGameForm from './AddGameForm'
 
 
 export default class Profile extends React.Component {
@@ -9,13 +12,28 @@ export default class Profile extends React.Component {
     super(props);
     this.state = {
       ownedItems: [],
-      followedItems: []
+      followedItems: [],
+      results: [],
+      tooMuchResults: false
     };
     this.service = new ItemService();
   }
 
   componentDidMount() {
     this.findProfileItems()
+  }
+
+  searchGames = (stringToSearch) => {
+    this.setState({tooMuchResults: false, results: []})
+    return this.service.searchGames( stringToSearch )
+      .then( results => {
+        if (results.length >= 60) {
+          this.setState ({tooMuchResults: true})
+        } else { 
+          this.setState({ results, tooMuchResults: false })
+         }
+      })
+      .catch(e => console.log(e))
   }
 
   findProfileItems() {
@@ -29,14 +47,6 @@ export default class Profile extends React.Component {
     .catch(e => console.log(e))
   }
 
-    // createItem() {
-  //   let {results} = this.state
-  //   this.service.createItem()
-  //   .then((itemCreted) => {
-  //     results.push(itemCreted)
-  //   })
-  // }
-
   deleteItem(itemId) {
     this.service.deleteItem(itemId)
     .then( res => {
@@ -47,15 +57,19 @@ export default class Profile extends React.Component {
   }
 
   render() {
-    let {ownedItems, followedItems} = this.state;
+    let {ownedItems, followedItems, results, tooMuchResults} = this.state;
     let {userInfo} = this.props;
     return (
       <div>
-        {/* s */}
-        {/* <button>Pon un juego a la venta</button>  */}
-        <AddItem />
-        <p>Aquí tengo que poner el componente AddItem, un modal con el searchbar y un form para rellenar el resto de info</p>
-        {/* Tendrá un link */}
+        <h4>Busca un juego para poner a la venta</h4>
+        <SearchBar submitSearch = { stringToSearch => this.searchGames(stringToSearch) }/>
+        { tooMuchResults ? 
+            <p >Demasiados resultados, restringe más tu búsqueda</p> 
+            :
+            <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
+              { results.map( (oneGameInfo, index) => <LittleGame gameInfo = { oneGameInfo } key = { index } />)}
+            </div>}
+
         <h4>Juegos que tienes a la venta:</h4>
         <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
           { ownedItems.map( (oneItemInfo, index) => <LittleItem 
@@ -68,7 +82,7 @@ export default class Profile extends React.Component {
 
         <h4>Juegos que sigues:</h4>
         <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
-          { followedItems.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo }/>)}
+          { followedItems.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo } addedGame = {() => this.findProfileItems()}/>)}
         </div>
 
         

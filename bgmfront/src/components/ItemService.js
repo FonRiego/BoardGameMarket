@@ -28,6 +28,10 @@ class ItemService {
     .then(response => response.data)
   }
 
+  addItem = (name, yearpublished, image_url, price, condition) => {
+    return this.service.post("/addItem", {name, yearpublished, image_url, price, condition})
+    .then(response => response.data)
+  }
 }
 
 export default ItemService;

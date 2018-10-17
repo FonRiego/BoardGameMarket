@@ -57,7 +57,7 @@ export default class Item extends React.Component {
     // );
     // const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
 
-    let { name, yearPublished, condition, price, image_url} = this.props.itemInfo;
+    let { name, yearpublished, condition, price, image_url} = this.props.itemInfo;
     let ownerName = this.props.itemInfo.ownerUser.username;
     let itemPublishedDayReordered = this.handleDate();
     let owned = this.state.owned
@@ -65,7 +65,7 @@ export default class Item extends React.Component {
     return (
       <div>
         <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>   
-          Ver más...
+          Ver más
         </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose} style={{color: "white"}} bsSize="large">
@@ -79,7 +79,7 @@ export default class Item extends React.Component {
             <div style={{border: "1px solid red",  width:"500px"}}>
               <p>Precio: {price} €</p>
               <p>Estado: {condition}</p>
-              <p>Año de Publicación: {yearPublished}</p>
+              <p>Año de Publicación: {yearpublished}</p>
               <p>Puesto a la venta: {itemPublishedDayReordered}</p>
               { owned && <button style={{ color: "orange" }} onClick={this.props.deleteItem} >Quita este juego de la venta</button>}
               { !owned && <p>Propietario: {ownerName}</p>}

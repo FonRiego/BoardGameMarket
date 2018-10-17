@@ -1,10 +1,22 @@
+// BORRAR ARCHIVO!!!!!!!!!!!!!!!!!
+
+
+
+
+
+
+
+
+
+
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import ItemService from './ItemService'
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
 import SearchBar from './SearchBar';
 import LittleGame from './LittleGame';
+import AddGameForm from './AddGameForm'
+import { Link, Switch, Route } from 'react-router-dom';
 // import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
 // import Popover from 'react-bootstrap/lib/Popover';
 // import Tooltip from 'react-bootstrap/lib/Tooltip';
@@ -20,6 +32,7 @@ export default class AddItem extends React.Component {
       show: false,
       results: [],
       tooMuchResults: false,
+      form: {}
       // datos del juego para enviar
     };
     this.service = new ItemService();
@@ -39,9 +52,15 @@ export default class AddItem extends React.Component {
       .then( results => {
         if (results.length >= 60) {
           this.setState ({tooMuchResults: true})
-        } else { this.setState({ results, tooMuchResults: false }) }
+        } else { 
+          this.setState({ results, tooMuchResults: false })
+         }
       })
       .catch(e => console.log(e))
+  }
+
+  showForm () {
+    console.log("hola")
   }
 
 
@@ -66,9 +85,6 @@ export default class AddItem extends React.Component {
           Pon un juego a la venta
         </Button>
 
-
-        
-
         <Modal show={this.state.show} onHide={this.handleClose} style={{color: "white"}} bsSize="large">
 
           <Modal.Header style={{backgroundColor: "blue"}} closeButton>
@@ -77,11 +93,13 @@ export default class AddItem extends React.Component {
           <Modal.Body style={{backgroundColor: "orange", display: "flex", flexWrap: "wrap", color: "blue"}}>
             <SearchBar submitSearch = { stringToSearch => this.searchGames(stringToSearch) }/>
 
-            { tooMuchResults ? <p >Demasiados resultados, restringe más tu búsqueda</p> :
+            { tooMuchResults ? 
+            <p >Demasiados resultados, restringe más tu búsqueda</p> 
+            :
             <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
-              { results.map( (oneItemInfo, index) => <LittleGame itemInfo = { oneItemInfo } key = { index }/>)}
-            </div>
-            }         
+              { results.map( (oneGameInfo, index) => <LittleGame gameInfo = { oneGameInfo } key = { index } />)}
+            </div>}
+
 
             {/* <h4>Popover in a modal</h4>
             <p>
