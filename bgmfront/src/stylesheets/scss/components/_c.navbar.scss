@@ -1,6 +1,3 @@
- //RECORDAR
- //box-sizing: border-box;
- 
  
  .navbar {
    position: fixed;
@@ -9,11 +6,31 @@
    display: flex;
    flex-direction: row;
    justify-content: space-between;
-   border: 1px solid red;
+   align-items: center;
    height: $header-height;
+   background-color: $secondary-main-color;
+   padding: 0 auto;
 
-   img {
-     height: 100%;
-     max-width: auto;
+   h1 {
+     color: $accent-color;
    }
+
+   button {
+    border: 1px solid $accent-color;
+    border-radius: 5px;
+    color: $accent-color;
+    font-weight: 500;
+    background-color: $main-color;
+   }
+
+  .avatar {
+    border: 1px solid $accent-color;
+    max-height: auto;
+    img {
+      height: 60px;
+    }
+  }
+
+
+
  }

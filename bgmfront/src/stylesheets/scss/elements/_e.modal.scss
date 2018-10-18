@@ -1,0 +1,31 @@
+.modal-main {
+  color: $accent-color;
+}
+
+.modal-header-footer {
+  background-color: $secondary-main-color;
+  .modal-header-text {
+    font-size: 4vh;
+  }
+}
+
+.modal-body {
+  height: 200px;
+  display: flex; 
+  flex-direction: column;
+  flex-wrap: wrap;
+  color: $accent-color;
+  justify-content: space-evenly;
+  align-items: center;
+  justify-items: center;
+}
+
+
+input, .modal-button {
+  border: 1px solid $accent-color;
+  border-radius: 5px;
+  color: $accent-color;
+  font-weight: 600;
+  background-color: $main-color;
+
+ }

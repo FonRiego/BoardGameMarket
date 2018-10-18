@@ -3,9 +3,8 @@ import AuthService from './AuthService';
 import { withRouter, Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
-import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
-import Popover from 'react-bootstrap/lib/Popover';
-import Tooltip from 'react-bootstrap/lib/Tooltip';
+// import Popover from 'react-bootstrap/lib/Popover';
+// import Tooltip from 'react-bootstrap/lib/Tooltip';
 
 class Signup extends React.Component {
   constructor(props){
@@ -38,7 +37,7 @@ class Signup extends React.Component {
     .then(() => {
       this.props.history.push("/profile");
     })
-    .catch( error => console.log(error))
+    .catch( error => alert(error))
   }
 
   handleClose() {
@@ -59,13 +58,13 @@ class Signup extends React.Component {
   render() {
     return (
       <div>
-        <Modal show={this.state.show} onHide={this.handleClose} style={{color: "white"}} bsSize="large">
-          <Modal.Header style={{backgroundColor: "blue"}} closeButton>
-            <Modal.Title>Crea una nueva cuenta</Modal.Title>
+        <Modal show={this.state.show} onHide={this.handleClose} className="modal-main" bsSize="large">
+          <Modal.Header className="modal-header-footer" closeButton>
+            <Modal.Title className="modal-header-text">Crea una nueva cuenta</Modal.Title>
           </Modal.Header>
-          <Modal.Body style={{display: "flex", flexDirection: "column", flexWrap: "wrap", color: "blue"}}>
-            <div style={{border: "1px solid red",  width:"500px"}}>
-              <form onSubmit={this.handleFormSubmit}>
+          <Modal.Body className="modal-body">
+            <div>
+              <form className="modal-body" onSubmit={this.handleFormSubmit}>
                 <fieldset>
                   <label>Nombre de usuario:</label>
                   <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
@@ -77,13 +76,14 @@ class Signup extends React.Component {
                 </fieldset>
 
                 <input type="submit" value="Regístrate" />
+
+                <Link to="/login"><button className="modal-button">O Inicia sesión</button></Link>
               </form>
               
-              <Link to="/login"><button>O Inicia sesión</button></Link>
             </div>
           </Modal.Body>
-          <Modal.Footer style={{backgroundColor: "blue"}}>
-            <Button onClick={this.handleClose}>Cerrar</Button>
+          <Modal.Footer className="modal-header-footer">
+            <Button className="modal-button" onClick={this.handleClose}>Cerrar</Button>
           </Modal.Footer>
         </Modal>
       </div>

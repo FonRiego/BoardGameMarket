@@ -8,8 +8,8 @@ const bcryptSalt = 10;
 
 const login = (req, user) => {
   return new Promise((resolve,reject) => {
-    req.login(user, err => {    
-      if(err) {
+    req.login(user, Error => {    
+      if(Error) {
         reject(new Error('Something went wrong'))
       }else{
         resolve(user);
@@ -37,7 +37,7 @@ router.post('/signup', (req, res, next) => {
   })
   .then( savedUser => login(req, savedUser))
   .then( user => res.json({ status: 'Signup & login successfull', user }))
-  .catch(e => next(e));
+  .catch(Error => next(Error));
 });
 
 // router.put('/update/:userId', (req, res, next) => {
