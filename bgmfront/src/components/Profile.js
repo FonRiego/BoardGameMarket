@@ -84,22 +84,7 @@ export default class Profile extends React.Component {
         <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
           { followedItems.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo } addedGame = {() => this.findProfileItems()}/>)}
         </div>
-
-        
-
-
       </div>
-        // <div style={{border: "1px solid red", display: "flex"}}>
-        //   <div style={{width: 120}}>
-        //     <h4> {itemInfo.name}</h4> 
-        //     <img src={itemInfo.image_url} alt={itemInfo.name} width="100px"/>
-        //   </div>
-        //   <div style={{width: 120}}>
-        //     <p>Precio: {itemInfo.price} €</p>
-        //     <p>Publicado el: {itemPublishedDayReordered}</p>
-        //     <Item itemInfo={itemInfo} userInfo = { userInfo }/>
-        //   </div>
-        // </div>
     )
   }
 }

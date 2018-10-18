@@ -20,7 +20,7 @@ const login = (req, user) => {
 
 router.post('/signup', (req, res, next) => {
   //VALORAR MÁS DATOS: EMAIL, ETC.
-  const { username, password, avatarName, avatarPath } = req.body;
+  const { username, password, avatarPath } = req.body;
   if (!username || !password){
     next(new Error('You must provide valid username and password'));
   }
@@ -32,7 +32,6 @@ router.post('/signup', (req, res, next) => {
     return new User({
       username,
       password: hashPass,
-      avatarName,
       avatarPath
     }).save();
   })

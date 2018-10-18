@@ -23,7 +23,6 @@ let users = [
     _id: "5bbf54e4589ee6175ef6a286",
     username: "alice",
     password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
-    avatarName: "",
     avatarPath: "/images/user_placeholder.png",
     followedItems: []
   },
@@ -31,7 +30,6 @@ let users = [
     _id:"5bbf54e4589ee6175ef6a287",
     username: "bob",
     password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
-    avatarName: "",
     avatarPath: "/images/user_placeholder.png",
     followedItems: []
   },
@@ -39,7 +37,6 @@ let users = [
     _id:"5bbf5ebfa81554177979ead0",
     username:"fon",
     password:"$2b$10$cre2tVzxhr12J0qKA/NKTOK4JIAOq.JMoDel3E0Uat5l1B7FAsgfq",
-    avatarName: "",
     avatarPath:"/images/user_placeholder.png",
     followedItems: ["5bc62d8c8e81211afae99f7c", "5bc62d8c8e81211afae99f7d", "5bc62d8c8e81211afae99f7e", "5bc62d8c8e81211afae99f7f" ]
   }

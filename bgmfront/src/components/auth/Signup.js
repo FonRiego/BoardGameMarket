@@ -13,7 +13,6 @@ class Signup extends React.Component {
     this.state = { 
       username: "", 
       password: "",
-      province: "",
       show: true
     };
     this.service = new AuthService();
@@ -26,19 +25,18 @@ class Signup extends React.Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
-    const province = this.state.province;
 
-    this.service.signup(username, password, province)
+
+    this.service.signup(username, password)
     .then( response => {
         this.setState({
             username: "", 
             password: "",
-            province: ""
         });
         this.props.getUser(response.user)
-    }).then ( e => {
+    })
+    .then(() => {
       this.props.history.push("/profile");
-      //CUANDO TENGA PROFILE, SERÁ PROFILE Y NO "/"
     })
     .catch( error => console.log(error))
   }
@@ -56,6 +54,7 @@ class Signup extends React.Component {
     const {name, value} = event.target;
     this.setState({[name]: value});
   }
+
 
   render() {
     return (
@@ -77,8 +76,6 @@ class Signup extends React.Component {
                   <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
                 </fieldset>
 
-            {/* FALTA AÑADIR SUBIR IMAGEN*/}
-            
                 <input type="submit" value="Regístrate" />
               </form>
               
