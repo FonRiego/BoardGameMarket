@@ -39,7 +39,7 @@ router.post("/delete", (req, res, next) => {
   })
 })
 
-router.post('/searchItems', (req, res, next) => {
+router.post("/searchItems", (req, res, next) => {
   const {stringToSearch} = req.body;
   Item.find( { name: {$regex: `${stringToSearch}`, $options: "i" }})
   .populate('ownerUser')
@@ -47,17 +47,16 @@ router.post('/searchItems', (req, res, next) => {
   .catch(e => next(e))
 })  
 
-router.post('/searchGames', (req, res, next) => {
+router.post("/searchGames", (req, res, next) => {
   const {stringToSearch} = req.body;
   Game.find( { "name.text": {$regex: `${stringToSearch}`, $options: "i" }})
   .then(itemList => {res.status(200).json(itemList)})
   .catch(e => next(e))
 })  
 
-router.post('/addItem', (req, res, next) => {
+router.post("/addItem", (req, res, next) => {
   const {name, yearpublished, image_url, price, condition} = req.body;
   const id = req.user._id;
-  console.log(name, yearpublished, image_url, price, condition, id)
   return new Item({
     name,
     yearpublished,
@@ -70,6 +69,24 @@ router.post('/addItem', (req, res, next) => {
   .catch(e => next(e));
 })
 
+router.post("/followItem", (req, res, next) => {
+  const userId = req.user._id;
+  const {itemId} = req.body;
+  console.log(userId)
+  console.log(itemId)
+  
+  User.findByIdAndUpdate(userId, { $push: { followedItems: itemId } })
+  .then( item => res.json({ status: 'Item Followed', item }))
+  .catch(e => next(e));
+})
+
+router.post("/unfollowItem", (req, res, next) => {
+  const userId = req.user._id;
+  const {itemId} = req.body;
+  User.findByIdAndUpdate(userId, { $pull: { followedItems: itemId } })
+  .then( item => res.json({ status: 'Item Unfollowed', item }))
+  .catch(e => next(e));
+})
 
 
 module.exports = router;

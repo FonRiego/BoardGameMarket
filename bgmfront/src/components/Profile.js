@@ -53,7 +53,6 @@ export default class Profile extends React.Component {
       this.findProfileItems()
       })
     .catch(e => console.log(e))
-
   }
 
   render() {

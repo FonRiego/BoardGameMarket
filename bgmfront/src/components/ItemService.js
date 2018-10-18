@@ -32,6 +32,16 @@ class ItemService {
     return this.service.post("/addItem", {name, yearpublished, image_url, price, condition})
     .then(response => response.data)
   }
+
+  followItem = (itemId) => {
+    return this.service.post("/followItem", {itemId})
+    .then(response => response.data)
+  }
+
+  unfollowItem = (itemId) => {
+    return this.service.post("/unfollowItem", {itemId})
+    .then(response => response.data)
+  }
 }
 
 export default ItemService;

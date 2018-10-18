@@ -15,9 +15,8 @@ export const Home = () => {
       2.- Pon juegos a la venta --> 'Date de alta como usuario o egístrate para poder poner tus juegos a la venta' --> con los links a login y signup, igual que en la navbar arriba. Tras log, queda en '/' pero al estar ya registrado te lleva a profile, donde se podrá añadir juegos a la venta.
     </p>
     <Link to={"/board"}>
-      <button style={{fontSize: 80}}>Ir al Board</button>
+      <button style={{fontSize: 80}}>Ir al Mercado</button>
     </Link>
-    <button style={{fontSize: 80}}>Pon juegos a la venta: Date de alta o regístrate</button>
     </div>
   )
 }

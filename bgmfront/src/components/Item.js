@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ItemService from './ItemService'
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
 import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
 import Popover from 'react-bootstrap/lib/Popover';
 import Tooltip from 'react-bootstrap/lib/Tooltip';
 
+
 export default class Item extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -16,9 +17,10 @@ export default class Item extends React.Component {
     this.state = {
       show: false,
       owned: false,
-      followed: false
-      // name: itemInfo.name
+      followed: false,
+      itemId: this.props.itemInfo._id
     };
+    this.service = new ItemService();
   }
 
   handleClose() {
@@ -41,15 +43,49 @@ export default class Item extends React.Component {
     if (this.props.userInfo) {
       let ownerName = this.props.itemInfo.ownerUser.username;
       let username = this.props.userInfo.username;
-      // let followed = 
+      let {itemId} = this.state;
+      let followedItems = this.props.userInfo.followedItems;
+
       if (ownerName === username) {
        this.setState({ owned: true })
       }
-      // if ()
+      if (followedItems.includes(itemId)) {
+        this.setState({ followed: true})
+      }
     }
   }
 
+  followedOrNot() {
+    let owned = this.state.owned
+    let followed = this.state.followed;
+    let ownerName = this.props.itemInfo.ownerUser.username;
+    if (!owned & !followed) {
+      return <div><p>Propietario: { ownerName }</p><button style={{ color: "orange" }} onClick={() => this.followItem()} >Seguir Juego</button></div>
+    } else if ( !owned & followed) {
+      return <div><p>Propietario: { ownerName }</p><button style={{ color: "orange" }} onClick={() => this.unfollowItem()} >Dejar de seguir</button></div>
+    }
+  }
+
+  followItem() {
+    let {itemId} = this.state;
+    this.service.followItem(itemId)
+    .then( res => {
+      this.setState({ followed: true })
+      })
+    .catch(e => alert("Inicia sesión para poder seguir"))
+  }
+
+  unfollowItem() {
+    let {itemId} = this.state;
+    this.service.unfollowItem(itemId)
+    .then( res => {
+      this.setState({ followed: false })
+      })
+    .catch(e => console.log(e))
+  }
+
   render() {
+
     // const popover = (
     //   <Popover id="modal-popover" title="popover">
     //     very popover. such engagement
@@ -57,8 +93,7 @@ export default class Item extends React.Component {
     // );
     // const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
 
-    let { name, yearpublished, condition, price, image_url} = this.props.itemInfo;
-    let ownerName = this.props.itemInfo.ownerUser.username;
+    let { name, yearpublished, condition, price, image_url } = this.props.itemInfo;
     let itemPublishedDayReordered = this.handleDate();
     let owned = this.state.owned
 
@@ -67,7 +102,6 @@ export default class Item extends React.Component {
         <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>   
           Ver más
         </Button>
-
         <Modal show={this.state.show} onHide={this.handleClose} style={{color: "white"}} bsSize="large">
           <Modal.Header style={{backgroundColor: "blue"}} closeButton>
             <Modal.Title>{name}</Modal.Title>
@@ -82,11 +116,7 @@ export default class Item extends React.Component {
               <p>Año de Publicación: {yearpublished}</p>
               <p>Puesto a la venta: {itemPublishedDayReordered}</p>
               { owned && <button style={{ color: "orange" }} onClick={this.props.deleteItem} >Quita este juego de la venta</button>}
-              { !owned && <p>Propietario: {ownerName}</p>}
-              { !owned && <button style={{ color: "orange" }}>Seguir Juego</button>}
-              
-
-
+              {this.followedOrNot()}
             </div>
            
 
