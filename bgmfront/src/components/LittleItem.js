@@ -13,8 +13,10 @@ export const LittleItem = (props) => {
   let handleDeleteItem = () => {
     let itemId = props.itemInfo._id
     props.deleteItem(itemId)
-
   }
+
+
+
   return (
       <div style={{border: "1px solid red", display: "flex"}}>
         <div style={{width: 120}}>
@@ -24,7 +26,7 @@ export const LittleItem = (props) => {
         <div style={{width: 120}}>
           <p>Precio: {props.itemInfo.price} €</p>
           <p>Publicado el: {itemPublishedDayReordered}</p>
-          <Item itemInfo={props.itemInfo} userInfo = { props.userInfo } deleteItem={handleDeleteItem}/>
+          <Item itemInfo={props.itemInfo} userInfo = { props.userInfo } deleteItem={handleDeleteItem} handleChanges = {() => props.handleChanges()}/>
         </div>
       </div>
   )

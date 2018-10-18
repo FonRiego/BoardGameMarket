@@ -81,7 +81,7 @@ export default class Profile extends React.Component {
 
         <h4>Juegos que sigues:</h4>
         <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
-          { followedItems.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo } addedGame = {() => this.findProfileItems()}/>)}
+          { followedItems.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo } handleChanges = {() => this.findProfileItems()}/>)}
         </div>
       </div>
     )

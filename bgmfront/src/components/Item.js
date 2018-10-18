@@ -71,7 +71,10 @@ export default class Item extends React.Component {
     this.service.followItem(itemId)
     .then( res => {
       this.setState({ followed: true })
-      })
+    })
+    .then( () => {
+      this.props.handleChanges()
+    })
     .catch(e => alert("Inicia sesión para poder seguir"))
   }
 
@@ -80,7 +83,10 @@ export default class Item extends React.Component {
     this.service.unfollowItem(itemId)
     .then( res => {
       this.setState({ followed: false })
-      })
+    })
+    .then( () => {
+      this.props.handleChanges()
+    })
     .catch(e => console.log(e))
   }
 
