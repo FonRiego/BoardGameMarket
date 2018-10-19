@@ -21,15 +21,16 @@ export default class SearchBar extends React.Component {
   render() {
     let {stringToSearch} = this.props;
     return (
-      <div>
+      <div className="searchbar-container">
         <input
+          className="searchbar-input"
           style={{width: "400px"}}
           placeholder = "¿Qué juego quieres buscar?"
           type = "text" 
           value = { stringToSearch }
           onChange = { element => this.handleInputChange(element)}
         />
-        <button onClick = { () => this.handleSubmit()}>Busca juegos a la venta</button>
+        <button className="searchbar-button" onClick = { () => this.handleSubmit()}>Busca juegos a la venta</button>
       </div>
     )
   }

@@ -14,7 +14,8 @@ export default class Profile extends React.Component {
       ownedItems: [],
       followedItems: [],
       results: [],
-      tooMuchResults: false
+      tooMuchResults: false,
+      profile: true
     };
     this.service = new ItemService();
   }
@@ -58,16 +59,19 @@ export default class Profile extends React.Component {
   render() {
     let {ownedItems, followedItems, results, tooMuchResults} = this.state;
     let {userInfo} = this.props;
+    let {profile} = this.state;
     return (
       <div>
-        <h4>Busca un juego para poner a la venta</h4>
-        <SearchBar submitSearch = { stringToSearch => this.searchGames(stringToSearch) }/>
-        { tooMuchResults ? 
-            <p >Demasiados resultados, restringe más tu búsqueda</p> 
-            :
-            <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
-              { results.map( (oneGameInfo, index) => <LittleGame gameInfo = { oneGameInfo } key = { index } />)}
-            </div>}
+        <div className="profile-searchbar">
+          <h4>Busca un juego para poner a la venta</h4>
+          <SearchBar submitSearch = { stringToSearch => this.searchGames(stringToSearch) }/>
+          { tooMuchResults ? 
+              <p >Demasiados resultados, restringe más tu búsqueda</p> 
+              :
+              <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
+                { results.map( (oneGameInfo, index) => <LittleGame gameInfo = { oneGameInfo } key = { index } />)}
+              </div>}
+        </div>
 
         <h4>Juegos que tienes a la venta:</h4>
         <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
@@ -76,6 +80,7 @@ export default class Profile extends React.Component {
           key = { index } 
           userInfo = { userInfo }
           deleteItem = { (itemId) => this.deleteItem(itemId) }
+          profile= {profile}
           />)}
         </div>
 

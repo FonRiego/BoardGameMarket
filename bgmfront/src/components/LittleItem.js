@@ -15,18 +15,18 @@ export const LittleItem = (props) => {
     props.deleteItem(itemId)
   }
 
-
-
   return (
-      <div style={{border: "1px solid red", display: "flex"}}>
-        <div style={{width: 120}}>
+      <div className="littleitem-container">
+        <div className="littleitem-left">
           <h4> {props.itemInfo.name}</h4> 
-          <img src={props.itemInfo.image_url} alt={props.itemInfo.name} width="100px"/>
+          <div className="item-img">
+            <img src={props.itemInfo.image_url} alt={props.itemInfo.name} width="100px"/>
+          </div>
         </div>
-        <div style={{width: 120}}>
-          <p>Precio: {props.itemInfo.price} €</p>
+        <div className="littleitem-right">
+          <p className="price">{props.itemInfo.price} €</p>
           <p>Publicado el: {itemPublishedDayReordered}</p>
-          <Item itemInfo={props.itemInfo} userInfo = { props.userInfo } deleteItem={handleDeleteItem} handleChanges = {() => props.handleChanges()}/>
+          <Item itemInfo={props.itemInfo} userInfo = { props.userInfo } deleteItem={handleDeleteItem} profile={props.profile} handleChanges = {() => props.handleChanges()}/>
         </div>
       </div>
   )

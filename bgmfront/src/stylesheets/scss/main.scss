@@ -15,14 +15,18 @@
 
 // @import 'components/c.storycard';
 // @import 'components/c.addcollab';
-// @import 'components/c.finalstory';
-// @import 'components/c.signuplogin';
+@import 'components/c.item';
+
 @import 'components/c.app';
-// @import 'components/c.comments';
-@import 'components/c.board';
+@import 'components/c.littleitem';
+
 @import 'components/c.navbar';
 @import 'components/c.home';
+@import 'components/c.board';
+@import 'components/c.searchbar';
 
 
 
-
+.profile-searchbar {
+  margin-top: 50px;
+}

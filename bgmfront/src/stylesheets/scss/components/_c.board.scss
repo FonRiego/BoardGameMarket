@@ -1,4 +1,13 @@
-.main-container {
+.board-container {
   margin-top: $header-height;
-  background-color: white;
+  background-color: $secondary-light-color;
+  height: 1000px;
+  .littleitems-board{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+  }
 }
+
+

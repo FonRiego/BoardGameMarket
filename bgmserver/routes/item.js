@@ -72,8 +72,6 @@ router.post("/addItem", (req, res, next) => {
 router.post("/followItem", (req, res, next) => {
   const userId = req.user._id;
   const {itemId} = req.body;
-  console.log(userId)
-  console.log(itemId)
   
   User.findByIdAndUpdate(userId, { $push: { followedItems: itemId } })
   .then( item => res.json({ status: 'Item Followed', item }))

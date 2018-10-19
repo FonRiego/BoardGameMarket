@@ -2,10 +2,6 @@ import React from 'react';
 import ItemService from './ItemService'
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
-import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
-import Popover from 'react-bootstrap/lib/Popover';
-import Tooltip from 'react-bootstrap/lib/Tooltip';
-
 
 export default class Item extends React.Component {
   constructor(props) {
@@ -59,10 +55,20 @@ export default class Item extends React.Component {
     let owned = this.state.owned
     let followed = this.state.followed;
     let ownerName = this.props.itemInfo.ownerUser.username;
+    let profile = this.props.profile;
     if (!owned & !followed) {
       return <div><p>Propietario: { ownerName }</p><button style={{ color: "orange" }} onClick={() => this.followItem()} >Seguir Juego</button></div>
     } else if ( !owned & followed) {
       return <div><p>Propietario: { ownerName }</p><button style={{ color: "orange" }} onClick={() => this.unfollowItem()} >Dejar de seguir</button></div>
+    } else if ( owned & !profile) {
+      return <p>El juego es tuyo!</p>
+    }
+  }
+
+  beAbleToDelete() {
+    let profile = this.props.profile;
+    if (profile) {
+    return <button className="modal-itemchange-button" onClick={this.props.deleteItem} >Quita este juego de la venta</button>
     }
   }
 
@@ -72,7 +78,7 @@ export default class Item extends React.Component {
     .then( res => {
       this.setState({ followed: true })
     })
-    .then( () => {
+   .then( () => {
       this.props.handleChanges()
     })
     .catch(e => alert("Inicia sesión para poder seguir"))
@@ -81,6 +87,7 @@ export default class Item extends React.Component {
   unfollowItem() {
     let {itemId} = this.state;
     this.service.unfollowItem(itemId)
+    
     .then( res => {
       this.setState({ followed: false })
     })
@@ -92,61 +99,35 @@ export default class Item extends React.Component {
 
   render() {
 
-    // const popover = (
-    //   <Popover id="modal-popover" title="popover">
-    //     very popover. such engagement
-    //   </Popover>
-    // );
-    // const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
-
     let { name, yearpublished, condition, price, image_url } = this.props.itemInfo;
     let itemPublishedDayReordered = this.handleDate();
-    let owned = this.state.owned
+    // let owned = this.state.owned
 
     return (
       <div>
-        <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>   
+        <Button className="modal-item-button" bsStyle="primary" bsSize="large" onClick={this.handleShow}>   
           Ver más
         </Button>
-        <Modal show={this.state.show} onHide={this.handleClose} style={{color: "white"}} bsSize="large">
-          <Modal.Header style={{backgroundColor: "blue"}} closeButton>
-            <Modal.Title>{name}</Modal.Title>
+        <Modal show={this.state.show} onHide={this.handleClose} className="modal-main" bsSize="large">
+          <Modal.Header className="modal-header-footer" closeButton>
+            <Modal.Title className="modal-itemheader-text">{name}</Modal.Title>
           </Modal.Header>
-          <Modal.Body style={{backgroundColor: "orange", display: "flex", flexWrap: "wrap"}}>
-            <div>
+          <Modal.Body className="modal-body item-container">
+            <div className="item-img">
               <img src={image_url} alt={name} width="250px"/>
             </div>
-            <div style={{border: "1px solid red",  width:"500px"}}>
-              <p>Precio: {price} €</p>
+            <div className="item-info">
+              <p className="item-price">Precio: {price} €</p>
               <p>Estado: {condition}</p>
               <p>Año de Publicación: {yearpublished}</p>
               <p>Puesto a la venta: {itemPublishedDayReordered}</p>
-              { owned && <button style={{ color: "orange" }} onClick={this.props.deleteItem} >Quita este juego de la venta</button>}
+              {this.beAbleToDelete()}
+              {/* { owned && <button className="modal-itemchange-button" onClick={this.props.deleteItem} >Quita este juego de la venta</button>} */}
               {this.followedOrNot()}
             </div>
-           
-
-            {/* <h4>Popover in a modal</h4>
-            <p>
-              there is a{' '}
-              <OverlayTrigger overlay={popover}>
-                <a href="#popover">popover</a>
-              </OverlayTrigger>{' '}
-              here
-            </p>
-
-            <h4>Tooltips in a modal</h4>
-            <p>
-              there is a{' '}
-              <OverlayTrigger overlay={tooltip}>
-                <a href="#tooltip">tooltip</a>
-              </OverlayTrigger>{' '}
-              here
-            </p> */}
-
           </Modal.Body>
-          <Modal.Footer style={{backgroundColor: "blue"}}>
-            <Button onClick={this.handleClose}>Cerrar</Button>
+          <Modal.Footer className="modal-header-footer">
+            <Button className="modal-item-button" onClick={this.handleClose}>Cerrar</Button>
           </Modal.Footer>
         </Modal>
       </div>
