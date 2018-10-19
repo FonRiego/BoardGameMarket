@@ -19,23 +19,10 @@
 // @import 'components/c.signuplogin';
 @import 'components/c.app';
 // @import 'components/c.comments';
-// @import 'components/c.dashboard';
+@import 'components/c.board';
 @import 'components/c.navbar';
 @import 'components/c.home';
-// @import 'components/c.footer';
-// @import 'components/c.list-inline';
-// @import 'components/c.header';
-// @import 'components/c.columns';
-// @import 'components/c.container';
-// @import 'components/c.alert-message';
-// @import 'utilities/u.text-align';
-// @import 'utilities/u.height';
-// @import 'utilities/u.color';
-// @import 'utilities/u.margin';
 
 
-// PARA EL SCSS DEL MAIN CONTAINER, RESTO DE LA PÄGINA HOME TRAS LA NAVBAR
-.main-container {
-  margin-top: $header-height;
-  background-color: grey;
-}
+
+

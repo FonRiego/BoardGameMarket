@@ -1,5 +1,5 @@
 import React from 'react';
-// import logo from './logo.svg';
+import './stylesheets/scss/main.scss';
 import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import Board from './components/Board';
 import {Home} from './components/Home';
 import Profile from './components/Profile'
+
 
 class App extends React.Component {
   constructor(props){

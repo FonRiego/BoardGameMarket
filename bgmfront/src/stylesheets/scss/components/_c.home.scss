@@ -1,6 +1,7 @@
 .main-container {
   background-image: url("../../Carcassonne.jpg");
   height: 1000px;
+  background-size: cover;
   
   .home-header {
     color: $secondary-accent-color;
