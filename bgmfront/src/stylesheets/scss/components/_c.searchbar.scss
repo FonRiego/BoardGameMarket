@@ -13,5 +13,12 @@
     font-weight: 600;
     background-color: $main-color;
   }
+  .searchbar-button:hover {
+    border: 3px solid $accent-color;
+    border-radius: 5px;
+    color: $accent-color;
+    font-weight: 600;
+    background-color: $main-color;
+  }
 }
 

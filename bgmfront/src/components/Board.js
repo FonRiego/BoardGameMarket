@@ -34,7 +34,7 @@ export default class Board extends React.Component {
     let {userInfo} = this.props;
   
     return(
-      <div className="board-container">
+      <div className="big-container">
         <SearchBar submitSearch = { stringToSearch => this.getItems(stringToSearch) }/>
         <div className="littleitems-board">
           { results.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo } handleChanges = {() => this.followAndUnfollow()}/>)}

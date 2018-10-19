@@ -5,6 +5,16 @@
   font-weight: 600;
   background-color: $secondary-light-color;
 }
+
+.modal-item-button:hover {
+  border: 1px solid $secondary-accent-color;
+  border-radius: 5px;
+  color: $secondary-accent-color;
+  font-weight: 600;
+  background-color: $secondary-light-color;
+}
+
+
 .modal-itemheader-text {
   font-size: 5vh;
   color: white;
@@ -34,6 +44,16 @@
     font-weight: 600;
     background-color: $secondary-main-color;
   }
+
+  .modal-itemchange-button:hover {
+    border: 3px solid $secondary-light-color;
+    border-radius: 5px;
+    color: $secondary-accent-color;
+    font-weight: 600;
+    background-color: $secondary-main-color;
+  }
 }
+
+
 
 

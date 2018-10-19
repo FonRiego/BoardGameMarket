@@ -28,3 +28,11 @@ input, .modal-button {
   background-color: $main-color;
 
  }
+
+ input:hover, .modal-button:hover {
+  border: 5px solid $accent-color;
+  border-radius: 5px;
+  color: $accent-color;
+  font-weight: 600;
+  background-color: $main-color;
+ }

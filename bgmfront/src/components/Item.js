@@ -57,9 +57,9 @@ export default class Item extends React.Component {
     let ownerName = this.props.itemInfo.ownerUser.username;
     let profile = this.props.profile;
     if (!owned & !followed) {
-      return <div><p>Propietario: { ownerName }</p><button style={{ color: "orange" }} onClick={() => this.followItem()} >Seguir Juego</button></div>
+      return <div><p>Propietario: { ownerName }</p><button className="modal-itemchange-button" onClick={() => this.followItem()} >Seguir Juego</button></div>
     } else if ( !owned & followed) {
-      return <div><p>Propietario: { ownerName }</p><button style={{ color: "orange" }} onClick={() => this.unfollowItem()} >Dejar de seguir</button></div>
+      return <div><p>Propietario: { ownerName }</p><button className="modal-itemchange-button" onClick={() => this.unfollowItem()} >Dejar de seguir</button></div>
     } else if ( owned & !profile) {
       return <p>El juego es tuyo!</p>
     }
@@ -101,7 +101,6 @@ export default class Item extends React.Component {
 
     let { name, yearpublished, condition, price, image_url } = this.props.itemInfo;
     let itemPublishedDayReordered = this.handleDate();
-    // let owned = this.state.owned
 
     return (
       <div>
@@ -122,7 +121,6 @@ export default class Item extends React.Component {
               <p>Año de Publicación: {yearpublished}</p>
               <p>Puesto a la venta: {itemPublishedDayReordered}</p>
               {this.beAbleToDelete()}
-              {/* { owned && <button className="modal-itemchange-button" onClick={this.props.deleteItem} >Quita este juego de la venta</button>} */}
               {this.followedOrNot()}
             </div>
           </Modal.Body>

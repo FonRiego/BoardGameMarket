@@ -1,4 +1,4 @@
-.board-container {
+.big-container {
   margin-top: $header-height;
   background-color: $secondary-light-color;
   height: 1000px;
@@ -7,6 +7,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 20px;
+
   }
 }
 

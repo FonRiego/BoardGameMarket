@@ -61,20 +61,20 @@ export default class Profile extends React.Component {
     let {userInfo} = this.props;
     let {profile} = this.state;
     return (
-      <div>
+      <div className="big-container">
         <div className="profile-searchbar">
-          <h4>Busca un juego para poner a la venta</h4>
+          <h3>Busca un juego para poner a la venta</h3>
           <SearchBar submitSearch = { stringToSearch => this.searchGames(stringToSearch) }/>
           { tooMuchResults ? 
-              <p >Demasiados resultados, restringe más tu búsqueda</p> 
+              <p>Demasiados resultados, restringe más tu búsqueda</p> 
               :
-              <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
+              <div className="littleitems-board">
                 { results.map( (oneGameInfo, index) => <LittleGame gameInfo = { oneGameInfo } key = { index } />)}
               </div>}
         </div>
 
-        <h4>Juegos que tienes a la venta:</h4>
-        <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
+        <h3>Juegos que tienes a la venta:</h3>
+        <div className="littleitems-board">
           { ownedItems.map( (oneItemInfo, index) => <LittleItem 
           itemInfo = { oneItemInfo } 
           key = { index } 
@@ -84,8 +84,8 @@ export default class Profile extends React.Component {
           />)}
         </div>
 
-        <h4>Juegos que sigues:</h4>
-        <div style={{ border: "1px solid red", display: "flex", flexWrap: "wrap" }}>
+        <h3>Juegos que sigues:</h3>
+        <div className="littleitems-board">
           { followedItems.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo } handleChanges = {() => this.findProfileItems()}/>)}
         </div>
       </div>
