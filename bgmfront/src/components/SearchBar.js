@@ -30,7 +30,7 @@ export default class SearchBar extends React.Component {
           value = { stringToSearch }
           onChange = { element => this.handleInputChange(element)}
         />
-        <button className="searchbar-button" onClick = { () => this.handleSubmit()}>Busca juegos a la venta</button>
+        <button className="searchbar-button" onClick = { () => this.handleSubmit()}>Busca juegos!</button>
       </div>
     )
   }

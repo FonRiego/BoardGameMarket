@@ -1,20 +1,20 @@
 .main-container {
-  background-image: url("../../Carcassonne.jpg");
-  height: 1000px;
+  background: url("../../Carcassonne.jpg") no-repeat center center fixed;
+  height: 100vh;
   background-size: cover;
   
   .home-header {
-    color: $secondary-accent-color;
-    font-size: 50px;
+    color: $accent-color;
+    font-size: 12vh;
     margin: 50px 0 60px 30px;
-    padding-top: 30px;
-    width: 40%;
+    padding-top: 10vh;
+    width: 50vw;
   }
 
   .button-container {
     box-sizing: border-box;
-    width: 40%;
-    margin-left: 50%;
+    width: 40vw;
+    margin-left: 50vw;
     button {
       border: 3px solid $accent-color;
       border-radius: 5px;
@@ -24,29 +24,16 @@
       p {
         color: $accent-color;
         font-weight: 500;
-        font-size: 40px;
-        width: 400px;
+        font-size: 5vh;
+        width: 30vw;
       }
     }
   }
 
 
   .button-container:hover {
-    box-sizing: border-box;
-    width: 40%;
-    margin-left: 50%;
     button {
       border: 6px solid $accent-color;
-      border-radius: 5px;
-      color: $accent-color;
-      font-weight: 500;
-      background-color: $secondary-main-color;
-      p {
-        color: $accent-color;
-        font-weight: 500;
-        font-size: 40px;
-        width: 400px;
-      }
     }
   }
 
