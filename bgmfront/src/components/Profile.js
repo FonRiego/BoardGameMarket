@@ -64,11 +64,11 @@ export default class Profile extends React.Component {
           <h3>Busca un juego para poner a la venta</h3>
           <SearchBar submitSearch = { stringToSearch => this.searchGames(stringToSearch) }/>
           { tooMuchResults ? 
-              <p>Demasiados resultados, restringe más tu búsqueda</p> 
-              :
-              <div className="littleitems-board">
-                { results.map( (oneGameInfo, index) => <LittleGame gameInfo = { oneGameInfo } key = { index } />)}
-              </div>}
+          <p>Demasiados resultados, restringe más tu búsqueda</p> 
+          :
+          <div className="littleitems-board">
+            { results.map( (oneGameInfo, index) => <LittleGame gameInfo = { oneGameInfo } key = { index } />)}
+          </div>}
         </div>
 
         <h3>Juegos que tienes a la venta:</h3>
