@@ -1,7 +1,9 @@
 .big-container {
   margin-top: $header-height;
+  margin-bottom: $footer-height;
   background-color: $secondary-light-color;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   .littleitems-board{
     display: flex;
     flex-wrap: wrap;

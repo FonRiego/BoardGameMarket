@@ -1,14 +1,14 @@
 {
-  "main.css": "/static/css/main.42a7d05e.chunk.css",
-  "main.js": "/static/js/main.f63a8e89.chunk.js",
-  "main.js.map": "/static/js/main.f63a8e89.chunk.js.map",
+  "main.css": "/static/css/main.7e982cce.chunk.css",
+  "main.js": "/static/js/main.c7d98acf.chunk.js",
+  "main.js.map": "/static/js/main.c7d98acf.chunk.js.map",
   "static/js/1.d05a8db6.chunk.js": "/static/js/1.d05a8db6.chunk.js",
   "static/js/1.d05a8db6.chunk.js.map": "/static/js/1.d05a8db6.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.229c360f.js",
   "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
   "static/media/main.scss": "/static/media/Carcassonne.0a85ebb7.jpg",
-  "static/css/main.42a7d05e.chunk.css.map": "/static/css/main.42a7d05e.chunk.css.map",
+  "static/css/main.7e982cce.chunk.css.map": "/static/css/main.7e982cce.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.26eaca3f89b3f5b9ae8f6c1b051d5e86.js": "/precache-manifest.26eaca3f89b3f5b9ae8f6c1b051d5e86.js",
+  "precache-manifest.65a80f34c8acf735e352ffbd15fb367c.js": "/precache-manifest.65a80f34c8acf735e352ffbd15fb367c.js",
   "service-worker.js": "/service-worker.js"
 }

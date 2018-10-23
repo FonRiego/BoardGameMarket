@@ -25,11 +25,6 @@ export default class Board extends React.Component {
       .catch(e => console.log(e))
   }
 
-  // followAndUnfollow() {
-  //   let stringToSearch = "";
-  //   this.getItems(stringToSearch);
-  // }
-
   render() {
     let {results} = this.state;
     let {userInfo} = this.props;
