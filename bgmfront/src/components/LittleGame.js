@@ -8,11 +8,12 @@ export const LittleGame = (props) => {
     <div className="littleitem-container">
       <div className="littleitem-left">
           <div className="item-img">
+            <h4> { name }</h4> 
             <img src={image_url} alt={ name } width="100px"/>
           </div>
       </div>
       <div className="littleitem-right">
-        <h4> { name.text }</h4> 
+        
         <p>Año de publicación: { yearpublished }</p>
         <AddGameForm name={ name } yearpublished = { yearpublished } image_url={ image_url } addedGame={() => {props.addedGame()}}/>
       </div>
