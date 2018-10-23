@@ -35,7 +35,7 @@ export default class Item extends React.Component {
     return itemPublishedDay + "-" + itemPublishedMonth + "-" + itemPublishedYear;
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.userInfo) {
       let ownerName = this.props.itemInfo.ownerUser.username;
       let username = this.props.userInfo.username;

@@ -2,7 +2,7 @@
  .navbar {
    position: fixed;
    top: 0;
-   width: 100%;
+   width: 100vw;
    display: flex;
    flex-direction: row;
    justify-content: space-between;
@@ -25,12 +25,7 @@
 
    button:hover {
     border: 3px solid $accent-color;
-    border-radius: 5px;
-    color: $accent-color;
-    font-weight: 500;
-    background-color: $main-color;
    }
-
 
   .avatar {
     border: 1px solid $accent-color;

@@ -4,7 +4,7 @@
   height: 30px;
   justify-content: center;
   .searchbar-input {
-    width: 100px;
+    width: 40vw;
   }
   .searchbar-button {
     border: 1px solid $accent-color;
@@ -15,10 +15,6 @@
   }
   .searchbar-button:hover {
     border: 3px solid $accent-color;
-    border-radius: 5px;
-    color: $accent-color;
-    font-weight: 600;
-    background-color: $main-color;
   }
 }
 

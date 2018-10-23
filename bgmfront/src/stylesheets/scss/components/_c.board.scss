@@ -1,13 +1,12 @@
 .big-container {
   margin-top: $header-height;
   background-color: $secondary-light-color;
-  height: 1500px;
+  height: 100%;
   .littleitems-board{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 20px;
-
+    margin: 20px 20px 50px;
   }
 }
 

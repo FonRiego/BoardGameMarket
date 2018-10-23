@@ -1,32 +1,13 @@
 @import 'settings/s.variables';
-// @import 'tools/t.positions';
-// @import 'tools/t.flex';
-// @import 'tools/t.transitions';
-// @import 'generic/g.reset';
-// @import 'generic/g.lightbox';
 @import 'elements/e.body';
 @import 'elements/e.modal';
-// @import 'elements/e.main';
-// @import 'elements/e.headings';
-// @import 'elements/e.lists';
-// @import 'elements/e.img';
-// @import 'elements/e.strong';
-// @import 'elements/e.paragraph';
-
-// @import 'components/c.storycard';
 @import 'components/c.profile';
 @import 'components/c.item';
-
 @import 'components/c.app';
 @import 'components/c.littleitem';
-
 @import 'components/c.navbar';
 @import 'components/c.home';
-@import 'components/c.board';
 @import 'components/c.searchbar';
+@import 'components/c.board';
 
 
-
-.profile-searchbar {
-  margin-top: 50px;
-}

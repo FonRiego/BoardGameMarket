@@ -3,8 +3,6 @@ import AuthService from './AuthService'
 import { withRouter, Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
-// import Popover from 'react-bootstrap/lib/Popover';
-// import Tooltip from 'react-bootstrap/lib/Tooltip';
 
 class Login extends React.Component {
   constructor(props) {

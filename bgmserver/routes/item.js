@@ -1,13 +1,8 @@
 const express = require('express');
 const router  = express.Router();
-const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
-const ObjectId = require('mongoose').Types.ObjectId;
 const User = require('../models/User')
 const Item = require('../models/Item')
 const Game = require('../models/Game')
-const Message = require('../models/Message')
-const Conversation = require('../models/Conversation')
-
 
 router.get("/profile", (req, res, next) => {
   const id = req.user._id;

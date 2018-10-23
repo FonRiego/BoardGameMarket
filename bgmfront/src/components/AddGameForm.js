@@ -1,11 +1,7 @@
 import React from 'react';
-// import AuthService from './AuthService'
 import { withRouter } from 'react-router-dom';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
-import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
-import Popover from 'react-bootstrap/lib/Popover';
-import Tooltip from 'react-bootstrap/lib/Tooltip';
 import ItemService from './ItemService';
 
 class AddGameForm extends React.Component {
@@ -35,7 +31,6 @@ class AddGameForm extends React.Component {
 
   handleClose() {
     this.setState({ show: false });
-    // this.props.history.push("/")
   }
 
   handleShow() {
@@ -50,22 +45,20 @@ class AddGameForm extends React.Component {
   render() {
     return (
       <div>
-        <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>   
+        <Button className="modal-item-button" bsStyle="primary" bsSize="large" onClick={this.handleShow}>   
           Añadir
         </Button>
-        <Modal show={this.state.show} onHide={this.handleClose} style={{color: "white"}} bsSize="large">
-          <Modal.Header style={{backgroundColor: "blue"}} closeButton>
-            <Modal.Title><p>Añade un juego a la venta usando el buscador</p></Modal.Title>
+        <Modal show={this.state.show} onHide={this.handleClose} className="modal-main" bsSize="large">
+          <Modal.Header className="modal-header-footer" closeButton>
+            <Modal.Title className="modal-header-text">Añade las opciones para tu juego</Modal.Title>
           </Modal.Header>
-          <Modal.Body style={{backgroundColor: "orange", display: "flex", flexWrap: "wrap", color: "blue"}}>
-            <div style={{border: "1px solid red",  width:"500px"}}>
-          
-              <form onSubmit={this.handleFormSubmit}>
+          <Modal.Body className="modal-body">
+            <div>
+              <form className="modal-body" onSubmit={this.handleFormSubmit}>
                 <fieldset>
                   <label>Precio:</label>
                   <input type="text" name="price" value={this.state.price} onChange={e => this.handleChange(e)} />
                 </fieldset>
-
                 <fieldset>
                   <label>Estado:</label>
                   <select name="condition" onChange={e => this.handleChange(e)}>
@@ -78,13 +71,12 @@ class AddGameForm extends React.Component {
                     <option value="Malo">Malo</option>
                   </select>
                 </fieldset>
-
-                <input type="submit" value="Añade juego a la venta" />
+                <input type="submit" value="Añade juego a la venta" className="modal-button"/>
               </form>
             </div>    
           </Modal.Body>
-          <Modal.Footer style={{backgroundColor: "blue"}}>
-            <Button onClick={this.handleClose}>Cerrar</Button>
+          <Modal.Footer className="modal-header-footer">
+            <Button className="modal-button" onClick={this.handleClose}>Cerrar</Button>
           </Modal.Footer>
         </Modal>
       </div>

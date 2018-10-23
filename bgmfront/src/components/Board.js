@@ -13,7 +13,7 @@ export default class Board extends React.Component {
   }
   
   componentWillMount(){
-    let stringToSearch = ""
+    let stringToSearch = "";
     this.getItems(stringToSearch);
   }
 
@@ -25,9 +25,10 @@ export default class Board extends React.Component {
       .catch(e => console.log(e))
   }
 
-  followAndUnfollow() {
-    console.log("Item Followed or Unfollowed")
-  }
+  // followAndUnfollow() {
+  //   let stringToSearch = "";
+  //   this.getItems(stringToSearch);
+  // }
 
   render() {
     let {results} = this.state;
@@ -37,7 +38,7 @@ export default class Board extends React.Component {
       <div className="big-container">
         <SearchBar submitSearch = { stringToSearch => this.getItems(stringToSearch) }/>
         <div className="littleitems-board">
-          { results.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo } handleChanges = {() => this.followAndUnfollow()}/>)}
+          { results.map( (oneItemInfo, index) => <LittleItem itemInfo = { oneItemInfo } key = { index } userInfo = { userInfo } handleChanges = {() => this.componentWillMount()}/>)}
         </div>
       </div>
     )

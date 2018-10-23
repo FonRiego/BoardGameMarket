@@ -1,11 +1,13 @@
 .modal-main {
   color: $accent-color;
+  width: auto;
 }
 
 .modal-header-footer {
   background-color: $secondary-main-color;
   .modal-header-text {
     font-size: 4vh;
+    text-align: center;
   }
 }
 
@@ -31,8 +33,4 @@ input, .modal-button {
 
  input:hover, .modal-button:hover {
   border: 5px solid $accent-color;
-  border-radius: 5px;
-  color: $accent-color;
-  font-weight: 600;
-  background-color: $main-color;
  }

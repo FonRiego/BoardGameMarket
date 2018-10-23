@@ -24,7 +24,6 @@ export default class SearchBar extends React.Component {
       <div className="searchbar-container">
         <input
           className="searchbar-input"
-          style={{width: "400px"}}
           placeholder = "¿Qué juego quieres buscar?"
           type = "text" 
           value = { stringToSearch }

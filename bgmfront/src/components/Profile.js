@@ -1,10 +1,8 @@
 import React from 'react';
 import ItemService from './ItemService'
 import {LittleItem} from './LittleItem'
-import AddItem from './AddItem'
 import SearchBar from './SearchBar';
-import LittleGame from './LittleGame';
-import AddGameForm from './AddGameForm'
+import {LittleGame} from './LittleGame';
 
 
 export default class Profile extends React.Component {

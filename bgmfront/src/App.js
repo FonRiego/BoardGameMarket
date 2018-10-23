@@ -6,7 +6,7 @@ import Login from './components/auth/Login';
 import AuthService from './components/auth/AuthService';
 import Navbar from './components/Navbar';
 import Board from './components/Board';
-import {Home} from './components/Home';
+import Home from './components/Home';
 import Profile from './components/Profile'
 
 
@@ -59,10 +59,16 @@ class App extends React.Component {
             <header className="App-header">
               <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
             </header>
-              <Switch>
+            <div className="main-container">
+            <Switch>
                 <Route exact path="/profile" component={() => <Profile userInfo={this.state.loggedInUser}/>}/>
                 <Route exact path="/board" component={() => <Board userInfo={this.state.loggedInUser}/>}/>
               </Switch>
+            </div>
+            <footer className="App-footer">
+              <p>&copy;2018 Board Game Market</p>
+              <p>Powered by Board Game Geek</p>
+            </footer>
           </div>
         </div>
       );
@@ -81,6 +87,10 @@ class App extends React.Component {
                 <Route exact path="/board" component={Board}/>
               </Switch>
             </div>
+            <footer className="App-footer">
+              <p>&copy;2018 Board Game Market</p>
+              <p>Powered by Board Game Geek</p>
+            </footer>
           </div>
         </div>
       );
